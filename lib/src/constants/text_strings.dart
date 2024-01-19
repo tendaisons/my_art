@@ -11,7 +11,7 @@ const String tSignInWithGoogle = "Sign-In with Google";
 
 
 // -- Splash Screen Text
-const String tAppName = "Hurudza";
+const String tAppName = "My_art";
 const String tAppTagLine = "Smart Farming";
 const String tAppDescription = "Smart Farming Solutions to greater yields.";
 
@@ -28,7 +28,7 @@ const String tOnBoardingCounter3 = "3/3";
 
 
 // -- Welcome Screen Text
-const String tWelcomeTitle = "Hurudza Plant-Care";
+const String tWelcomeTitle = "My_art Plant-Care";
 const String tWelcomeSubTitle = "Smart Farming Solutions to greater yields.";
 
 
