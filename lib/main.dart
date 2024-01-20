@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_art/src/features/auth/pages/welcome/welcome_screen.dart';
 import 'package:my_art/src/utils/theme/theme.dart';
 
 void main() {
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 500),
-      home: const Center(child: CircularProgressIndicator()), 
+      home: WelcomeScreen()
+      // const Center(child: CircularProgressIndicator()), 
     );
   }
 }

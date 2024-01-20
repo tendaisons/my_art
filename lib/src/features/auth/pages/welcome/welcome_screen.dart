@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:my_art/src/constants/image_strings.dart';
 import 'package:my_art/src/constants/sizes.dart';
 import 'package:my_art/src/constants/text_strings.dart';
+import 'package:my_art/src/features/auth/pages/sign_in/sign_in_screen.dart';
+import 'package:my_art/src/features/auth/pages/sign_up/sign_up_screen.dart';
 import '../../../../constants/colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -41,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                   child: OutlinedButton(
                     key: const Key('signin-button'),
                     onPressed: () {
-                    //  Get.to(() => const SigninScreen());
+                     Get.to(() => const SigninScreen());
                     },
                     child: Text(tSignIn.toUpperCase()),
                   ),
@@ -50,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: () {
-                      // Get.to(() => const SignUpScreen());
+                      Get.to(() => const SignUpScreen());
                     },
                     child: Text(tSignUp.toUpperCase()),
                   ),
