@@ -1,8 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:my_art/src/constants/sizes.dart';
 import 'package:my_art/src/constants/text_strings.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:my_art/src/features/auth/controllers/sign_up_controller.dart';
+import 'package:my_art/src/models/app_models.dart';
 
 class SignUpFormWidget extends StatefulWidget {
   const SignUpFormWidget({super.key});
@@ -12,10 +16,13 @@ class SignUpFormWidget extends StatefulWidget {
 }
 
 class _SignUpFormWidgetState extends State<SignUpFormWidget> {
-   bool passwordVisible = false;
+  bool passwordVisible = false;
+  bool isLoading = false;
+  TextEditingController dateOfBirth = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    // final controller = Get.put(SignUpController());
+    final controller = Get.put(SignUpController());
     final formKey = GlobalKey<FormState>();
 
     return Container(
@@ -26,8 +33,9 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextFormField(
-              // controller: controller.fullname,
-               validator: (value) => value?.isEmpty ?? true ? 'Please enter your full name' : null,
+              controller: controller.fullname,
+              validator: (value) =>
+                  value?.isEmpty ?? true ? 'Please enter your full name' : null,
               decoration: const InputDecoration(
                 hintText: tFullName,
                 prefixIcon: Icon(LineAwesomeIcons.user),
@@ -37,8 +45,9 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               height: tFormHeight - 20,
             ),
             TextFormField(
-              // controller: controller.email,
-              validator: (value) => value?.isEmail ?? false ? null : 'Please enter a valid email',
+              controller: controller.email,
+              validator: (value) =>
+                  value?.isEmail ?? false ? null : 'Please enter a valid email',
               decoration: const InputDecoration(
                 hintText: tEmail,
                 prefixIcon: Icon(LineAwesomeIcons.envelope),
@@ -48,22 +57,84 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
               height: tFormHeight - 20,
             ),
             TextFormField(
-              // controller: controller.phoneNo,
-              validator: (value) => value!.length >= 10 ? null : 'Please enter a valid phone number',
+              controller: controller.phoneNo,
+              validator: (value) => value!.length >= 10
+                  ? null
+                  : 'Please enter a valid phone number',
               decoration: const InputDecoration(
                   hintText: tPhoneNo, prefixIcon: Icon(LineAwesomeIcons.phone)),
+            ),
+            // Location
+            const SizedBox(
+              height: tFormHeight - 20,
+            ),
+            TextFormField(
+              controller: controller.location,
+              validator: (value) =>
+                  value?.isEmpty ?? true ? 'Please enter a home address' : null,
+              decoration: const InputDecoration(
+                  hintText: "Address", prefixIcon: Icon(LineAwesomeIcons.home)),
+            ),
+            // Date time picker
+            const SizedBox(
+              height: tFormHeight - 20,
+            ),
+            TextFormField(
+              controller: dateOfBirth,
+              validator: (value) {
+                if (value!.isEmpty) {
+                  return 'Age is required';
+                }
+                return null;
+              },
+              decoration: const InputDecoration(
+                hintText: "Date of Birth",
+                prefixIcon: Icon(LineAwesomeIcons.calendar),
+              ),
+              onTap: () async {
+                DateTime? datepicked = await showDatePicker(
+                    context: context,
+                    initialDate: DateTime(2005),
+                    firstDate: DateTime(1950),
+                    lastDate: DateTime(2005));
+
+                if (datepicked != null) {
+                  setState(() {
+                    dateOfBirth.text =
+                        DateFormat("yyyy-MM-dd").format(datepicked);
+                  });
+                }
+              },
             ),
             const SizedBox(
               height: tFormHeight - 20,
             ),
             TextFormField(
-              // controller: controller.password,
+              controller: controller.password,
               obscureText: !passwordVisible,
-              validator: (value) => value!.length >= 8 ? null : 'Password must be 8 characters long',
+              validator: (value) {
+                if (value!.length < 8) {
+                  return 'Password must be at least 8 characters long';
+                }
+                if (!value.contains(RegExp(r'[A-Z]'))) {
+                  return 'Password must contain at least one uppercase letter';
+                }
+                if (!value.contains(RegExp(r'[a-z]'))) {
+                  return 'Password must contain at least one lowercase letter';
+                }
+                if (!value.contains(RegExp(r'[0-9]'))) {
+                  return 'Password must contain at least one digit';
+                }
+                if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
+                  return 'Password must contain atleast one special character';
+                }
+                // Add more complexity rules as needed
+                return null;
+              },
               decoration: InputDecoration(
-                  hintText: tPassword, 
-                  prefixIcon: const Icon(LineAwesomeIcons.lock),
-                  suffixIcon: IconButton(
+                hintText: tPassword,
+                prefixIcon: const Icon(LineAwesomeIcons.lock),
+                suffixIcon: IconButton(
                   onPressed: () {
                     // Show or hide password
                     setState(() {
@@ -72,40 +143,55 @@ class _SignUpFormWidgetState extends State<SignUpFormWidget> {
                   },
                   icon: Icon(passwordVisible == true
                       ? LineAwesomeIcons.eye_slash
-                      : LineAwesomeIcons.eye
-                  ),
+                      : LineAwesomeIcons.eye),
                 ),
-                  
-                  ),
+              ),
             ),
             const SizedBox(
-              height: tFormHeight - 10,
+              height: tFormHeight - 15,
             ),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                  onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      // Signup with phone number
-                      // SignUpController.instance.phoneAuthentication(
-                      //   controller.phoneNo.text.trim());
-                      // Get.to(() => const OTPScreen());
+                  onPressed: isLoading
+                      ? null
+                      : () {
+                          if (formKey.currentState!.validate()) {
+                            setState(() {
+                              isLoading = true;
+                            });
 
-                      // Signup with email and password
-                      // SignUpController.instance.signUpUser(controller.email.text.trim(), controller.password.text.trim());
+                            final pass = controller.password.text.trim();
+                            final mail = controller.email.text.trim();
 
-                      // Signup with email and password Using User Model
-                      // final user = UserModel(
-                      //   email: controller.email.text.trim(),
-                      //   password: controller.password.text.trim(),
-                      //   fullname: controller.fullname.text.trim(),
-                      //   phoneNo: controller.phoneNo.text.trim(),
-                      //   createdAt: DateTime.now().toString().substring(0, 10)
-                      // );
-                      // SignUpController.instance.createUser(user);
-                    }
-                  },
-                  child: Text(tSignUp.toUpperCase())),
+                            SignUpController.instance.signUpUser(email: mail, password: pass)
+                            .then((_) {
+                              setState(() {
+                                isLoading = false;
+                              });
+                              final user = UserModel(
+                                uid: FirebaseAuth.instance.currentUser!.uid,
+                                email: controller.email.text.trim(),
+                                fullname: controller.fullname.text.trim(),
+                                phoneNo: controller.phoneNo.text.trim(),
+                                location: controller.location.text.trim(),
+                                dateofbirth: dateOfBirth.text.trim(),
+                                createdAt:
+                                    DateTime.now().toString().substring(0, 10));
+
+                            SignUpController.instance
+                                .createUser(user);
+                            });
+                          }
+                        },
+                  child: isLoading
+                      ? Container(
+                          height: 16,
+                          width: 16,
+                          child: const CircularProgressIndicator(
+                              color: Colors.white, strokeWidth: 2.0),
+                        )
+                      : Text(tSignUp.toUpperCase())),
             )
           ],
         ),

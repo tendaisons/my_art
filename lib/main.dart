@@ -1,11 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_art/src/features/auth/pages/welcome/welcome_screen.dart';
+import 'package:my_art/firebase_options.dart';
+import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 import 'package:my_art/src/utils/theme/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
+      .then((value) => Get.put(AuthenticationRepository()));
+ 
   runApp(const MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -21,8 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 500),
-      home: WelcomeScreen()
-      // const Center(child: CircularProgressIndicator()), 
+      home: const Center(child: CircularProgressIndicator()), 
     );
   }
 }
