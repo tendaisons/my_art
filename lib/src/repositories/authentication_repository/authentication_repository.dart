@@ -1,11 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:my_art/screens/home_screen.dart';
 import 'package:my_art/src/exceptions/delete_account_exception.dart';
 import 'package:my_art/src/exceptions/reset_password_exception.dart';
 import 'package:my_art/src/exceptions/sign_in_with_email_and_password_failure.dart';
 import 'package:my_art/src/exceptions/sign_up_with_email_and_password_failure.dart';
 import 'package:my_art/src/features/auth/pages/welcome/welcome_screen.dart';
-import 'package:my_art/src/features/portal/pages/dashboard/dashboard.dart';
+import 'package:my_art/widgets/navbar_roots.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -26,7 +27,7 @@ class AuthenticationRepository extends GetxController {
   _setInitialScreen(User? user) {
     user == null
         ? Get.offAll(() => const WelcomeScreen())
-        : Get.offAll(() => const Dashboard());
+        : Get.offAll(() => NavBarRoots());
   }
 
   //  -- Create Account with Email and Passsword
@@ -36,7 +37,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       firebaseUser.value != null
-          ? Get.offAll(() => const Dashboard())
+          ? Get.offAll(() => NavBarRoots())
           : Get.to(() => const WelcomeScreen());
     } on FirebaseAuthException catch (e) {
       final ex = SignUpWithEmailAndPasswordFailure.code(e.code);
@@ -62,9 +63,9 @@ class AuthenticationRepository extends GetxController {
     }
     return null;
   }
+
   // SignOut
   Future<void> logout() async => await _auth.signOut();
-
 
   // -- Reset Password
   Future<String?> resetPassword(String email) async {
@@ -93,5 +94,4 @@ class AuthenticationRepository extends GetxController {
       Get.snackbar("Error", ex.message);
     }
   }
-
 }
