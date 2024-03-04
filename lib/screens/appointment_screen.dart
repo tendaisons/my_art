@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class AppointmentsScreen extends StatelessWidget {
   List imgs = [
-    "doctor1.jpg",
-    "doctor2.jpg",
-    "doctor3.jpg",
-    "doctor4.jpg",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
   ];
 
   @override
@@ -48,8 +48,7 @@ class AppointmentsScreen extends StatelessWidget {
                       children: [
                         const CircleAvatar(
                           radius: 35,
-                          backgroundImage:
-                              AssetImage("assets/images/doctor1.jpg"),
+                          backgroundImage: AssetImage("assets/images/dpe.png"),
                         ),
                         const SizedBox(height: 15),
                         const Text(

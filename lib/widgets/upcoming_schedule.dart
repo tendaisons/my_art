@@ -40,7 +40,7 @@ class UpcomingSchedule extends StatelessWidget {
                     subtitle: Text("Therapist"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/doctor1.jpg"),
+                      backgroundImage: AssetImage("assets/images/dpe.png"),
                     ),
                   ),
                   const Padding(
@@ -190,7 +190,7 @@ class UpcomingSchedule extends StatelessWidget {
                     subtitle: Text("Therapist"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/doctor2.jpg"),
+                      backgroundImage: AssetImage("assets/images/dpe.png"),
                     ),
                   ),
                   const Padding(
@@ -340,7 +340,7 @@ class UpcomingSchedule extends StatelessWidget {
                     subtitle: Text("Therapist"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/doctor2.jpg"),
+                      backgroundImage: AssetImage("assets/images/dpe.png"),
                     ),
                   ),
                   const Padding(

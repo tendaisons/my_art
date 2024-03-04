@@ -15,7 +15,7 @@ class ChatScreen extends StatelessWidget {
               CircleAvatar(
                 radius: 25,
                 backgroundImage: AssetImage(
-                  "images/doctor1.jpg",
+                  "assets/images/dpe.png",
                 ),
               ),
               Padding(

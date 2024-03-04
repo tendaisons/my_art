@@ -20,7 +20,7 @@ class SettingScreen extends StatelessWidget {
           const ListTile(
             leading: CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage("assets/images/doctor1.jpg"),
+              backgroundImage: AssetImage("assets/images/dpe.png"),
             ),
             title: Text(
               "Dear Programmer",

@@ -41,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(20),
-              child: Image.asset("images/doctors.png"),
+              child: Image.asset("assets/images/doctors.png"),
             ),
             const SizedBox(height: 50),
             const Text(
