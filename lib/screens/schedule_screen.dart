@@ -55,7 +55,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           vertical: 12, horizontal: 15),
                       decoration: BoxDecoration(
                         color: _buttonIndex == 0
-                            ? const Color(0xFF7165D6)
+                            ? const Color(0xff303e9f)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -83,7 +83,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           vertical: 12, horizontal: 15),
                       decoration: BoxDecoration(
                         color: _buttonIndex == 1
-                            ? const Color(0xFF7165D6)
+                            ? const Color(0xff303e9f)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -111,7 +111,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                           vertical: 12, horizontal: 15),
                       decoration: BoxDecoration(
                         color: _buttonIndex == 2
-                            ? const Color(0xFF7165D6)
+                            ? const Color(0xff303e9f)
                             : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),

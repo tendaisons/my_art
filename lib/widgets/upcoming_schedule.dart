@@ -135,7 +135,7 @@ class UpcomingSchedule extends StatelessWidget {
                           width: 150,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF7165D6),
+                            color: const Color(0xff303e9f),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Center(
@@ -285,7 +285,7 @@ class UpcomingSchedule extends StatelessWidget {
                           width: 150,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF7165D6),
+                            color: const Color(0xff303e9f),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Center(
@@ -435,7 +435,7 @@ class UpcomingSchedule extends StatelessWidget {
                           width: 150,
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           decoration: BoxDecoration(
-                            color: const Color(0xFF7165D6),
+                            color: const Color(0xff303e9f),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: const Center(

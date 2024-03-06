@@ -31,7 +31,7 @@ class SignUpController extends GetxController {
         message: 'Welcome to My Art',
         duration: Duration(seconds: 3),
         snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.green,
+        backgroundColor: Color(0xff303e9f),
         margin: EdgeInsets.all(8),
         borderRadius: 8,
         icon: Icon(Icons.check_circle_outline),

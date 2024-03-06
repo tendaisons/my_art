@@ -109,12 +109,12 @@ class SettingScreen extends StatelessWidget {
             leading: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.green.shade100,
+                color: Color(0xff303e9f),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
                 Icons.settings_suggest_outlined,
-                color: Colors.green,
+                color: Color.fromARGB(255, 221, 224, 246),
                 size: 35,
               ),
             ),
