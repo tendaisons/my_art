@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_art/screens/add-patient.dart';
 import 'package:my_art/screens/appointment_screen.dart';
 import 'package:my_art/widgets/navbar_roots.dart';
 import 'dart:ui';
@@ -14,6 +15,86 @@ class DashboardScreen extends StatelessWidget {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(130.0),
+        child: AppBar(
+          backgroundColor: Color(0xffffffff),
+          title: Text(
+            'Dr TATENDA ALEXIO',
+            style: TextStyle(
+              fontSize: 32 * ffem,
+              fontWeight: FontWeight.w500,
+              height: 1.5 * ffem / fem,
+              letterSpacing: -1.92 * fem,
+              color: Color(0xff24284d),
+            ),
+          ),
+          actions: [
+            SizedBox(width: 32 * fem), // Add space at the beginning
+            Align(
+              child: SizedBox(
+                width: 232 * fem,
+                height: 63 * fem,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => const AddPatient());
+                    // Add your onPressed functionality here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24 * fem),
+                    ),
+                    backgroundColor: Color(0xff303e9f),
+                  ),
+                  child: Center(
+                    child: Text(
+                      '+ADD PATIENT',
+                      style: SafeGoogleFont(
+                        'Poppins',
+                        fontSize: 20 * ffem,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5 * ffem / fem,
+                        letterSpacing: -1.2 * fem,
+                        color: Color(0xffffffff), // Text color of the button
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 12 * fem), // Add space between buttons
+            Align(
+              child: SizedBox(
+                width: 232 * fem,
+                height: 63 * fem,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Add your onPressed functionality here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(24 * fem),
+                    ),
+                    backgroundColor: Color(0xff303e9f),
+                  ),
+                  child: Text(
+                    '+ADD TREATMENT',
+                    style: SafeGoogleFont(
+                      'Poppins',
+                      fontSize: 20 * ffem,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5 * ffem / fem,
+                      letterSpacing: -1.2 * fem,
+                      color: Color(0xffffffff),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(width: 32 * fem), // Add space at the end
+          ],
+        ),
+      ),
       body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,
@@ -45,42 +126,7 @@ class DashboardScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
-                            // rectangle28cw (13:3)
-                            left: 32 * fem,
-                            top: 145 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 232 * fem,
-                                height: 63 * fem,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(24 * fem),
-                                    color: Color(0xff303e9f),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            // rectangle3zf9 (13:5)
-                            left: 276 * fem,
-                            top: 145 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 232 * fem,
-                                height: 63 * fem,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.circular(24 * fem),
-                                    color: Color(0xff303e9f),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+
                           Positioned(
                             // rectangle4rST (13:6)
                             left: 32 * fem,
@@ -206,49 +252,17 @@ class DashboardScreen extends StatelessWidget {
                             ),
                           ),
                           Positioned(
-                            // addpatientGAj (13:25)
                             left: 85 * fem,
                             top: 162 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 126 * fem,
-                                height: 30 * fem,
-                                child: Text(
-                                  '+ADD PATIENT',
-                                  style: SafeGoogleFont(
-                                    'Poppins',
-                                    fontSize: 20 * ffem,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.5 * ffem / fem,
-                                    letterSpacing: -1.2 * fem,
-                                    color: Color(0xffffffff),
-                                  ),
-                                ),
-                              ),
+                            child: GestureDetector(
+                              onTap: () {
+                                // Add your button tap functionality here
+                                // For example, you can navigate to a new screen
+                                // or perform any action you desire
+                              },
                             ),
                           ),
-                          Positioned(
-                            // hellow1y (13:29)
-                            left: 32 * fem,
-                            top: 37 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 51 * fem,
-                                height: 33 * fem,
-                                child: Text(
-                                  'Hello',
-                                  style: SafeGoogleFont(
-                                    'Poppins',
-                                    fontSize: 22 * ffem,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.5 * ffem / fem,
-                                    letterSpacing: -0.66 * fem,
-                                    color: Color(0xff24284d),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+
                           Positioned(
                             // newoK5 (13:34)
                             left: 86 * fem,
@@ -417,28 +431,7 @@ class DashboardScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
-                            // drtatendaalexiomKm (13:28)
-                            left: 32 * fem,
-                            top: 66 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 277 * fem,
-                                height: 48 * fem,
-                                child: Text(
-                                  'Dr TATENDA ALEXIO ',
-                                  style: SafeGoogleFont(
-                                    'Poppins',
-                                    fontSize: 32 * ffem,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.5 * ffem / fem,
-                                    letterSpacing: -1.92 * fem,
-                                    color: Color(0xff24284d),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+
                           Positioned(
                             // addtreatmentTTV (13:27)
                             left: 312 * fem,
@@ -447,17 +440,6 @@ class DashboardScreen extends StatelessWidget {
                               child: SizedBox(
                                 width: 159 * fem,
                                 height: 30 * fem,
-                                child: Text(
-                                  '+ADD TREATMENT',
-                                  style: SafeGoogleFont(
-                                    'Poppins',
-                                    fontSize: 20 * ffem,
-                                    fontWeight: FontWeight.w500,
-                                    height: 1.5 * ffem / fem,
-                                    letterSpacing: -1.2 * fem,
-                                    color: Color(0xffffffff),
-                                  ),
-                                ),
                               ),
                             ),
                           ),
@@ -515,29 +497,7 @@ class DashboardScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Positioned(
-                            // rectangle7nnb (13:10)
-                            left: 0 * fem,
-                            top: 1023 * fem,
-                            child: Align(
-                              child: SizedBox(
-                                width: 540 * fem,
-                                height: 86 * fem,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xffffffff),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Color(0x3f000000),
-                                        offset: Offset(0 * fem, 4 * fem),
-                                        blurRadius: 2 * fem,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          //
                           Positioned(
                             // rectangle104VD (13:16)
                             left: 59 * fem,
