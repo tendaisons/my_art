@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_art/screens/add-patient.dart';
-import 'package:my_art/screens/appointment_screen.dart';
-import 'package:my_art/widgets/navbar_roots.dart';
+import 'package:my_art/screens/add_patient.dart';
+//import 'package:my_art/screens/appointment_screen.dart';
+//import 'package:my_art/widgets/navbar_roots.dart';
 import 'dart:ui';
 import 'package:my_art/utils.dart';
 
@@ -14,10 +14,12 @@ class DashboardScreen extends StatelessWidget {
     double baseWidth = 540;
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
-    return Scaffold(
+    return SafeArea(
+        child: Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(130.0),
         child: AppBar(
+          leading: const Icon(Icons.menu, color: Color(0xff303e9f)),
           backgroundColor: Color(0xffffffff),
           title: Text(
             'Dr TATENDA ALEXIO',
@@ -31,56 +33,62 @@ class DashboardScreen extends StatelessWidget {
           ),
           actions: [
             SizedBox(width: 32 * fem), // Add space at the beginning
-            Align(
-              child: SizedBox(
-                width: 232 * fem,
-                height: 63 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => const AddPatient());
-                    // Add your onPressed functionality here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24 * fem),
-                    ),
-                    backgroundColor: Color(0xff303e9f),
+            Container(
+              width: 232 * fem,
+              height: 63 * fem,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24 * fem),
+                color: Color(0xff303e9f),
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.to(() => const AddPatient());
+                  // Add your onPressed functionality here
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24 * fem),
                   ),
-                  child: Center(
-                    child: Text(
-                      '+ADD PATIENT',
-                      style: SafeGoogleFont(
-                        'Poppins',
-                        fontSize: 20 * ffem,
-                        fontWeight: FontWeight.w500,
-                        height: 1.5 * ffem / fem,
-                        letterSpacing: -1.2 * fem,
-                        color: Color(0xffffffff), // Text color of the button
-                      ),
+                  backgroundColor: Color(
+                      0xff303e9f), // Use primary instead of backgroundColor
+                ),
+                child: Center(
+                  child: Text(
+                    '+ADD PATIENT',
+                    style: TextStyle(
+                      fontSize: 20 * ffem,
+                      fontWeight: FontWeight.w500,
+                      height: 1.5 * ffem / fem,
+                      letterSpacing: -1.2 * fem,
+                      color: Color(0xffffffff), // Text color of the button
                     ),
                   ),
                 ),
               ),
             ),
             SizedBox(width: 12 * fem), // Add space between buttons
-            Align(
-              child: SizedBox(
-                width: 232 * fem,
-                height: 63 * fem,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Add your onPressed functionality here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24 * fem),
-                    ),
-                    backgroundColor: Color(0xff303e9f),
+            Container(
+              width: 232 * fem,
+              height: 63 * fem,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(24 * fem),
+                color: Color(0xff303e9f),
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  // Add your onPressed functionality here
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24 * fem),
                   ),
+                  backgroundColor: Color(
+                      0xff303e9f), // Use primary instead of backgroundColor
+                ),
+                child: Center(
                   child: Text(
                     '+ADD TREATMENT',
-                    style: SafeGoogleFont(
-                      'Poppins',
+                    style: TextStyle(
                       fontSize: 20 * ffem,
                       fontWeight: FontWeight.w500,
                       height: 1.5 * ffem / fem,
@@ -652,6 +660,6 @@ class DashboardScreen extends StatelessWidget {
               ])),
         ),
       ),
-    );
+    ));
   }
 }
