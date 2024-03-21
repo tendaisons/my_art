@@ -1,14 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_art/screens/add_patient.dart';
+import 'package:my_art/screens/app_bar.dart';
 //import 'package:my_art/screens/appointment_screen.dart';
 //import 'package:my_art/widgets/navbar_roots.dart';
-import 'dart:ui';
 import 'package:my_art/utils.dart';
 
 class DashboardScreen extends StatelessWidget {
-  DashboardScreen({super.key});
+  const DashboardScreen({super.key});
   @override
   Widget build(BuildContext context) {
     double baseWidth = 540;
@@ -16,93 +13,7 @@ class DashboardScreen extends StatelessWidget {
     double ffem = fem * 0.97;
     return SafeArea(
         child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(130.0),
-        child: AppBar(
-          leading: const Icon(Icons.menu, color: Color(0xff303e9f)),
-          backgroundColor: Color(0xffffffff),
-          title: Text(
-            'Dr TATENDA ALEXIO',
-            style: TextStyle(
-              fontSize: 32 * ffem,
-              fontWeight: FontWeight.w500,
-              height: 1.5 * ffem / fem,
-              letterSpacing: -1.92 * fem,
-              color: Color(0xff24284d),
-            ),
-          ),
-          actions: [
-            SizedBox(width: 32 * fem), // Add space at the beginning
-            Container(
-              width: 232 * fem,
-              height: 63 * fem,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24 * fem),
-                color: Color(0xff303e9f),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.to(() => const AddPatient());
-                  // Add your onPressed functionality here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24 * fem),
-                  ),
-                  backgroundColor: Color(
-                      0xff303e9f), // Use primary instead of backgroundColor
-                ),
-                child: Center(
-                  child: Text(
-                    '+ADD PATIENT',
-                    style: TextStyle(
-                      fontSize: 20 * ffem,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5 * ffem / fem,
-                      letterSpacing: -1.2 * fem,
-                      color: Color(0xffffffff), // Text color of the button
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 12 * fem), // Add space between buttons
-            Container(
-              width: 232 * fem,
-              height: 63 * fem,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24 * fem),
-                color: Color(0xff303e9f),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed functionality here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24 * fem),
-                  ),
-                  backgroundColor: Color(
-                      0xff303e9f), // Use primary instead of backgroundColor
-                ),
-                child: Center(
-                  child: Text(
-                    '+ADD TREATMENT',
-                    style: TextStyle(
-                      fontSize: 20 * ffem,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5 * ffem / fem,
-                      letterSpacing: -1.2 * fem,
-                      color: Color(0xffffffff),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 32 * fem), // Add space at the end
-          ],
-        ),
-      ),
+      appBar: const MyAppBar(),
       body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,
@@ -127,7 +38,7 @@ class DashboardScreen extends StatelessWidget {
                                 width: 540 * fem,
                                 height: 1108 * fem,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xfff2f6ff),
                                   ),
                                 ),
@@ -147,7 +58,7 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xffffffff),
+                                    color: const Color(0xffffffff),
                                   ),
                                 ),
                               ),
@@ -165,7 +76,7 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xffffffff),
+                                    color: const Color(0xffffffff),
                                   ),
                                 ),
                               ),
@@ -183,10 +94,10 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xffffffff),
+                                    color: const Color(0xffffffff),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Color(0x3f000000),
+                                        color: const Color(0x3f000000),
                                         offset: Offset(0 * fem, 4 * fem),
                                         blurRadius: 2 * fem,
                                       ),
@@ -211,7 +122,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 20 * ffem,
                                     fontWeight: FontWeight.w500,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff4b57a8),
+                                    color: const Color(0xff4b57a8),
                                   ),
                                 ),
                               ),
@@ -232,7 +143,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 20 * ffem,
                                     fontWeight: FontWeight.w500,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff4b57a8),
+                                    color: const Color(0xff4b57a8),
                                   ),
                                 ),
                               ),
@@ -253,7 +164,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 20 * ffem,
                                     fontWeight: FontWeight.w500,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff4b57a8),
+                                    color: const Color(0xff4b57a8),
                                   ),
                                 ),
                               ),
@@ -286,7 +197,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -307,7 +218,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -328,7 +239,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -349,7 +260,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -370,7 +281,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -391,7 +302,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -412,7 +323,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -433,7 +344,7 @@ class DashboardScreen extends StatelessWidget {
                                     fontSize: 16 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.5 * ffem / fem,
-                                    color: Color(0xff24284d),
+                                    color: const Color(0xff24284d),
                                   ),
                                 ),
                               ),
@@ -463,7 +374,7 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xff303e9f),
+                                    color: const Color(0xff303e9f),
                                   ),
                                 ),
                               ),
@@ -481,7 +392,7 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xff303e9f),
+                                    color: const Color(0xff303e9f),
                                   ),
                                 ),
                               ),
@@ -499,7 +410,7 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(24 * fem),
-                                    color: Color(0xff303e9f),
+                                    color: const Color(0xff303e9f),
                                   ),
                                 ),
                               ),
@@ -515,7 +426,7 @@ class DashboardScreen extends StatelessWidget {
                                 width: 15 * fem,
                                 height: 15 * fem,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xff33d48e),
                                   ),
                                 ),
@@ -531,7 +442,7 @@ class DashboardScreen extends StatelessWidget {
                                 width: 15 * fem,
                                 height: 15 * fem,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xff33d48e),
                                   ),
                                 ),
@@ -547,7 +458,7 @@ class DashboardScreen extends StatelessWidget {
                                 width: 15 * fem,
                                 height: 15 * fem,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xff64ace6),
                                   ),
                                 ),
@@ -563,7 +474,7 @@ class DashboardScreen extends StatelessWidget {
                                 width: 15 * fem,
                                 height: 15 * fem,
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xff64ace6),
                                   ),
                                 ),
@@ -582,8 +493,8 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(46 * fem),
-                                    border:
-                                        Border.all(color: Color(0xff33d48e)),
+                                    border: Border.all(
+                                        color: const Color(0xff33d48e)),
                                   ),
                                 ),
                               ),
@@ -601,8 +512,8 @@ class DashboardScreen extends StatelessWidget {
                                   decoration: BoxDecoration(
                                     borderRadius:
                                         BorderRadius.circular(46 * fem),
-                                    border:
-                                        Border.all(color: Color(0xff33d48e)),
+                                    border: Border.all(
+                                        color: const Color(0xff33d48e)),
                                   ),
                                 ),
                               ),
