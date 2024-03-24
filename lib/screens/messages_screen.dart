@@ -4,12 +4,12 @@ import 'package:my_art/screens/chat_screen.dart';
 
 class MessagesScreen extends StatelessWidget {
   List imgs = [
-    "doctor1.jpg",
-    "doctor2.jpg",
-    "doctor3.jpg",
-    "doctor4.jpg",
-    "doctor1.jpg",
-    "doctor2.jpg",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
+    "dpe.png",
   ];
 
   bool activeStatus = true;

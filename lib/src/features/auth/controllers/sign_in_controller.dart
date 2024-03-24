@@ -12,22 +12,20 @@ class SignInController extends GetxController {
   Future<void> logInUser(String email, String password) async {
     String? error = await AuthenticationRepository.instance
         .signInWithEmailAndPassword(email, password);
-        if (error == null) {
-         Get.showSnackbar( const GetSnackBar(
-                      title: 'Login Successful',
-                      message: 'Welcome back',
-                      duration:  Duration(seconds: 3),
-                      snackPosition: SnackPosition.BOTTOM,
-                      backgroundColor: Colors.green,
-                      margin: EdgeInsets.all(8),
-                      borderRadius: 8,
-                      icon: Icon(Icons.check_circle_outline),
-         ));
-    } else {
-    Get.showSnackbar(GetSnackBar(
-      message: error.toString(),
-      duration: const Duration(seconds: 2)
+    if (error == null) {
+      Get.showSnackbar(const GetSnackBar(
+        title: 'Login Successful',
+        message: 'Welcome back',
+        duration: Duration(seconds: 3),
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Color(0xff303e9f),
+        margin: EdgeInsets.all(8),
+        borderRadius: 8,
+        icon: Icon(Icons.check_circle_outline),
       ));
+    } else {
+      Get.showSnackbar(GetSnackBar(
+          message: error.toString(), duration: const Duration(seconds: 2)));
+    }
   }
-}
 }

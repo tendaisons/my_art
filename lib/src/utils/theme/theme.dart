@@ -6,11 +6,10 @@ import 'package:my_art/src/utils/theme/widget_themes/text_theme.dart';
 import 'widget_themes/text_formfield_theme.dart';
 
 class TAppTheme {
-
-TAppTheme ._();
+  TAppTheme._();
 
   static ThemeData lightTheme = ThemeData(
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.blueGrey,
     brightness: Brightness.light,
     textTheme: TTextTheme.lightTextTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.lightOutlinedButtonTheme,
@@ -20,7 +19,7 @@ TAppTheme ._();
   );
 
   static ThemeData darkTheme = ThemeData(
-    primarySwatch: Colors.green,
+    primarySwatch: Colors.blueGrey,
     brightness: Brightness.dark,
     textTheme: TTextTheme.darkTextTheme,
     outlinedButtonTheme: TOutlinedButtonTheme.darkOutlinedButtonTheme,

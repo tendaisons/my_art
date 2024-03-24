@@ -1,21 +1,31 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_art/screens/add_patient.dart';
 import 'package:my_art/src/models/app_models.dart';
 import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 import 'package:my_art/src/repositories/user_repository/user_repository.dart';
 
-class SignUpController extends GetxController {
-  static SignUpController get instance => Get.find();
+class AddPatientController extends GetxController {
+  static AddPatientController get instance => Get.find();
 
   // Get data from TextField Controllers
-  final email = TextEditingController();
-  final password = TextEditingController();
+  final oiartnumber = TextEditingController();
   final fullname = TextEditingController();
   final phoneNo = TextEditingController();
-  final location = TextEditingController();
+  final email = TextEditingController();
+  final age = TextEditingController();
+  final gender = TextEditingController();
+  final address = TextEditingController();
+  final country = TextEditingController();
+  final province = TextEditingController();
+  final city = TextEditingController();
+  final allergies = TextEditingController();
+  final note = TextEditingController();
   final userRepo = Get.put(UserRepository());
 
-  Future<void> createUser(UserModel user) async {
+  Future<void> AddPatient(UserModel user) async {
     await userRepo.createUser(user);
     //signUpUser(user.email, user.password);
   }
@@ -27,7 +37,7 @@ class SignUpController extends GetxController {
 
     if (error == null) {
       Get.showSnackbar(const GetSnackBar(
-        title: 'Account Created Successfully',
+        title: 'Patient Saved Successfully',
         message: 'Welcome to My Art',
         duration: Duration(seconds: 3),
         snackPosition: SnackPosition.BOTTOM,

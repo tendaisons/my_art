@@ -9,7 +9,7 @@ class UserRepository extends GetxController {
   final _db = FirebaseFirestore.instance;
 
   createUser(UserModel user) async {
-   await  _db
+    await _db
         .collection("Users")
         // Use Firebase user uid as docID
         .doc(user.uid)
@@ -17,22 +17,22 @@ class UserRepository extends GetxController {
         .whenComplete(
           () => Get.snackbar('Success', 'Your account has been created.',
               snackPosition: SnackPosition.BOTTOM,
-              backgroundColor: Colors.green.withOpacity(0.1),
+              backgroundColor:
+                  Color.fromARGB(255, 154, 207, 225).withOpacity(0.1),
               colorText: Colors.green),
         )
         // ignore: body_might_complete_normally_catch_error
         .catchError((error, stackTrace) async {
-      Get.snackbar(
-        'Error',
-        'Something went wrong. Please try again.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
-        colorText: Colors.red);
+      Get.snackbar('Error', 'Something went wrong. Please try again.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red);
     });
   }
 
-  Future <UserModel> getUserDetails(String email) async {
-    final snapshot = await _db.collection("Users").where("Email", isEqualTo: email).get();
+  Future<UserModel> getUserDetails(String email) async {
+    final snapshot =
+        await _db.collection("Users").where("Email", isEqualTo: email).get();
     final userData = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
     return userData;
   }
@@ -50,12 +50,10 @@ class UserRepository extends GetxController {
               colorText: Colors.green),
         )
         .catchError((error, stackTrace) async {
-      Get.snackbar(
-        'Error',
-        'Something went wrong. Please try again.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
-        colorText: Colors.red);
+      Get.snackbar('Error', 'Something went wrong. Please try again.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red);
     });
   }
 
@@ -69,15 +67,13 @@ class UserRepository extends GetxController {
           () => Get.snackbar('Success', 'Your account has been deleted.',
               snackPosition: SnackPosition.BOTTOM,
               backgroundColor: Colors.green.withOpacity(0.1),
-              colorText: Colors.green),
+              colorText: Colors.lightBlueAccent),
         )
         .catchError((error, stackTrace) async {
-      Get.snackbar(
-        'Error',
-        'Something went wrong. Please try again.',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.withOpacity(0.1),
-        colorText: Colors.red);
+      Get.snackbar('Error', 'Something went wrong. Please try again.',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red);
     });
   }
 }
