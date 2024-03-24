@@ -2,7 +2,6 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:my_art/screens/add_patient.dart';
 import 'package:my_art/src/models/app_models.dart';
 import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 import 'package:my_art/src/repositories/user_repository/user_repository.dart';
@@ -37,8 +36,8 @@ class AddPatientController extends GetxController {
 
     if (error == null) {
       Get.showSnackbar(const GetSnackBar(
-        title: 'Patient Saved Successfully',
-        message: 'Welcome to My Art',
+        title: 'Success',
+        message: 'Patient Saved Successfully',
         duration: Duration(seconds: 3),
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Color(0xff303e9f),

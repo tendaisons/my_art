@@ -1,9 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:my_art/screens/add_patient.dart';
-//import 'package:my_art/screens/appointment_screen.dart';
-//import 'package:my_art/widgets/navbar_roots.dart';
 import 'dart:ui';
 import 'package:my_art/utils.dart';
 
@@ -16,11 +12,7 @@ class DashboardScreen extends StatelessWidget {
     double ffem = fem * 0.97;
     return SafeArea(
         child: Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(130.0),
-        child: AppBar(
-          leading: const Icon(Icons.menu, color: Color(0xff303e9f)),
-          backgroundColor: Color(0xffffffff),
+      appBar: AppBar(
           title: Text(
             'Dr TATENDA ALEXIO',
             style: TextStyle(
@@ -31,78 +23,7 @@ class DashboardScreen extends StatelessWidget {
               color: Color(0xff24284d),
             ),
           ),
-          actions: [
-            SizedBox(width: 32 * fem), // Add space at the beginning
-            Container(
-              width: 232 * fem,
-              height: 63 * fem,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24 * fem),
-                color: Color(0xff303e9f),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.to(() => const AddPatient());
-                  // Add your onPressed functionality here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24 * fem),
-                  ),
-                  backgroundColor: Color(
-                      0xff303e9f), // Use primary instead of backgroundColor
-                ),
-                child: Center(
-                  child: Text(
-                    '+ADD PATIENT',
-                    style: TextStyle(
-                      fontSize: 20 * ffem,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5 * ffem / fem,
-                      letterSpacing: -1.2 * fem,
-                      color: Color(0xffffffff), // Text color of the button
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 12 * fem), // Add space between buttons
-            Container(
-              width: 232 * fem,
-              height: 63 * fem,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(24 * fem),
-                color: Color(0xff303e9f),
-              ),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Add your onPressed functionality here
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24 * fem),
-                  ),
-                  backgroundColor: Color(
-                      0xff303e9f), // Use primary instead of backgroundColor
-                ),
-                child: Center(
-                  child: Text(
-                    '+ADD TREATMENT',
-                    style: TextStyle(
-                      fontSize: 20 * ffem,
-                      fontWeight: FontWeight.w500,
-                      height: 1.5 * ffem / fem,
-                      letterSpacing: -1.2 * fem,
-                      color: Color(0xffffffff),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(width: 32 * fem), // Add space at the end
-          ],
         ),
-      ),
       body: SingleChildScrollView(
         child: SizedBox(
           width: double.infinity,
@@ -659,8 +580,88 @@ class DashboardScreen extends StatelessWidget {
                         ])))
               ])),
         ),
+          // drawer: Drawer(
+          //   child: ListView(
+          //     padding: const EdgeInsets.only(top: 60, left: 20, right: 20),
+          //     children: <Widget>[
+          //        ListTile(
+          //             contentPadding: EdgeInsets.all(0),
+          //             title: Text('$tAppName',
+          //                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+          //             subtitle: Text(tAppDescription),
+          //           ),
+          //           const SizedBox(height: 20),
+          //           ListTile(
+          //             leading: const Icon(LineAwesomeIcons.home),
+          //             title: const Text('Home'),
+          //             onTap: () => Get.back(),
+          //           ),
+          //           ListTile(
+          //               leading: const Icon(LineAwesomeIcons.user),
+          //               title: const Text('Profile'),
+          //               onTap: () {
+          //                 Get.back();
+          //                // Get.to(() => const ProfileScreen());
+          //               }),
+          //           ListTile(
+          //             leading: const Icon(LineAwesomeIcons.book),
+          //             title: const Text('Farming Tips'),
+          //             onTap: () {
+          //               Get.back();
+          //               //Get.to(() => const FarmingTips());
+          //             },
+          //           ),
+          //           ListTile(
+          //             leading: const Icon(LineAwesomeIcons.cog),
+          //             title: const Text('Settings'),
+          //             onTap: () {
+          //               Get.back();
+          //               //Get.to(() => const Settings());
+          //             },
+          //           ),
+          //           ListTile(
+          //               leading: const Icon(LineAwesomeIcons.info_circle),
+          //               title: const Text('About'),
+          //               onTap: () {
+          //                 Get.back();
+          //                 //Get.to(() => const AppInfo());
+          //               }),
+          //           ListTile(
+          //             leading: const Icon(LineAwesomeIcons.readme),
+          //             title: const Text('Records'),
+          //             onTap: () {
+          //               Get.back();
+          //               //Get.to(() => const ViewAll());
+          //
+          //             },
+          //           ),
+          //           ListTile(
+          //             leading: const Icon(LineAwesomeIcons.power_off),
+          //             title: const Text('Logout'),
+          //             onTap: () {
+          //               Get.back();
+          //               Get.defaultDialog(
+          //                 title: "Logout",
+          //                 titleStyle: const TextStyle(fontSize: 20),
+          //                 content: const Padding(
+          //                   padding: EdgeInsets.symmetric(vertical: 15.0),
+          //                   child: Text("Are you sure, you want to logout?"),
+          //                 ),
+          //                 confirm: ElevatedButton(
+          //                   onPressed: () => AuthenticationRepository.instance.logout(),
+          //                   style: ElevatedButton.styleFrom(
+          //                       backgroundColor: Colors.redAccent, side: BorderSide.none),
+          //                   child: const Text('Yes'),
+          //                 ),
+          //                 cancel: OutlinedButton(
+          //                     onPressed: () => Get.back(), child: const Text("No")),
+          //               );
+          //             },
+          //           ),
+          //
+          //     ],
       ),
-    )
+          ),
     );
   }
 }
