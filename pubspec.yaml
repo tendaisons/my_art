@@ -28,6 +28,7 @@ dependencies:
   firebase_core: ^2.24.2
   firebase_auth: ^4.16.0
   cloud_firestore: ^4.14.0
+  google_sign_in: ^6.2.1
 
   custom_clippers: ^2.0.0
 
@@ -35,7 +36,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
 
 flutter:
 
@@ -49,3 +50,13 @@ flutter:
     - assets/images/forget_password/
     - assets/images/profile_picture/
     - assets/logo/
+    - assets/dashboard/images/icon-aid-kit.png
+    - assets/dashboard/images/vector.png
+    - assets/dashboard/images/group-1.png
+    - assets/dashboard/images/icon-user.png
+    - assets/dashboard/images/group-3.png
+    - assets/dashboard/images/group-10.png
+    - assets/dashboard/images/icon-calendar.png
+    - assets/dashboard/images/icon-newspaper.png
+    - assets/dashboard/images/group-2.png
+    - assets/dashboard/images/icon-user-plus.png

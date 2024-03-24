@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_art/screens/home_screen.dart';
 import 'package:my_art/screens/messages_screen.dart';
 import 'package:my_art/screens/schedule_screen.dart';
 import 'package:my_art/screens/settings_screen.dart';
+import 'package:my_art/src/features/portal/pages/dashboard/dashboard.dart';
 
 class NavBarRoots extends StatefulWidget {
   @override
@@ -13,10 +13,11 @@ class NavBarRoots extends StatefulWidget {
 class _NavBarRootsState extends State<NavBarRoots> {
   int _selectedIndex = 0;
   final _screens = [
-    DashboardScreen(),
+    DashboardXScreen(),
     MessagesScreen(),
     ScheduleScreen(),
     SettingScreen(),
+
   ];
 
   @override
@@ -29,7 +30,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: Color(0xFF7165D6),
+          selectedItemColor: Color(0xff303e9f),
           unselectedItemColor: Colors.black26,
           selectedLabelStyle: TextStyle(
             fontWeight: FontWeight.bold,

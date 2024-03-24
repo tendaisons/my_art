@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 
 class SettingScreen extends StatelessWidget {
   @override
@@ -20,7 +22,7 @@ class SettingScreen extends StatelessWidget {
           const ListTile(
             leading: CircleAvatar(
               radius: 30,
-              backgroundImage: AssetImage("assets/images/doctor1.jpg"),
+              backgroundImage: AssetImage("assets/images/dpe.png"),
             ),
             title: Text(
               "Dear Programmer",
@@ -109,12 +111,12 @@ class SettingScreen extends StatelessWidget {
             leading: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.green.shade100,
+                color: Color(0xff303e9f),
                 shape: BoxShape.circle,
               ),
               child: const Icon(
                 Icons.settings_suggest_outlined,
-                color: Colors.green,
+                color: Color.fromARGB(255, 221, 224, 246),
                 size: 35,
               ),
             ),
@@ -153,7 +155,25 @@ class SettingScreen extends StatelessWidget {
           ),
           const Divider(height: 40),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              // Log out
+                Get.defaultDialog(
+                  title: "Logout",
+                  titleStyle: const TextStyle(fontSize: 20),
+                  content: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Text("Are you sure, you want to logout?"),
+                  ),
+                  confirm: ElevatedButton(
+                    onPressed: () => AuthenticationRepository.instance.logout(),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent, side: BorderSide.none),
+                    child: const Text('Yes'),
+                  ),
+                  cancel: OutlinedButton(
+                      onPressed: () => Get.back(), child: const Text("No")),
+                );
+            },
             leading: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
