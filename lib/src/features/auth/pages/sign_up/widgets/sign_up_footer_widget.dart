@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:my_art/src/constants/image_strings.dart';
 import 'package:my_art/src/constants/text_strings.dart';
 import 'package:my_art/src/features/auth/pages/sign_in/sign_in_screen.dart';
+import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 
 class SignUpFooterWidget extends StatelessWidget {
   const SignUpFooterWidget({super.key});
@@ -17,8 +18,8 @@ class SignUpFooterWidget extends StatelessWidget {
           child: OutlinedButton.icon(
               onPressed: () {
                 // Sign in with google
-                // AuthenticationRepository.instance.
-                // signInWithGoogle();
+                AuthenticationRepository.instance.
+                signInWithGoogle();
                 
               },
               icon: const Image(

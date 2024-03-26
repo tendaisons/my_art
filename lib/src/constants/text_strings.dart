@@ -100,3 +100,17 @@ const String tFABBottomSheetOption1 = "Take a Picture";
 const String tFABBottomSheetOption1Text = "Take a Picture of the Plant";
 const String tFABBottomSheetOption2 = "Upload a Picture";
 const String tFABBottomSheetOption2Text = "Upload a Picture of the Plant";
+
+
+// Add Patient
+const String artNumber = "OI ART Number";
+const String patientName = "Patient Full Name";
+const String patientPhone = "Patient Phone Number";
+const String patientEmail = "Patient Email";
+const String age = "Age";
+const String gender = "Gender";
+const String save = "Save";
+const String country = "Country";
+const String province = "Province";
+const String city = "City";
+

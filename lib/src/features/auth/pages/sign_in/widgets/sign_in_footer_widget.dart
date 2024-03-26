@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/features/auth/pages/sign_up/sign_up_screen.dart';
+import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 import '../../../../../constants/image_strings.dart';
 import '../../../../../constants/sizes.dart';
 import '../../../../../constants/text_strings.dart';
@@ -23,7 +24,7 @@ class SignInFooterWidget extends StatelessWidget {
             icon: const Image(image: AssetImage(tGoogleLogoImage), width: 20.0),
             onPressed: () {
               // Sign in with google
-             // AuthenticationRepository.instance.signInWithGoogle();
+             AuthenticationRepository.instance.signInWithGoogle();
             },
             label: Text(tSignInWithGoogle.toUpperCase() , style: Theme.of(context).textTheme.titleLarge,),
           ),

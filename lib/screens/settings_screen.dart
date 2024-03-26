@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
 
 class SettingScreen extends StatelessWidget {
   @override
@@ -153,7 +155,25 @@ class SettingScreen extends StatelessWidget {
           ),
           const Divider(height: 40),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              // Log out
+                Get.defaultDialog(
+                  title: "Logout",
+                  titleStyle: const TextStyle(fontSize: 20),
+                  content: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 15.0),
+                    child: Text("Are you sure, you want to logout?"),
+                  ),
+                  confirm: ElevatedButton(
+                    onPressed: () => AuthenticationRepository.instance.logout(),
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.redAccent, side: BorderSide.none),
+                    child: const Text('Yes'),
+                  ),
+                  cancel: OutlinedButton(
+                      onPressed: () => Get.back(), child: const Text("No")),
+                );
+            },
             leading: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
