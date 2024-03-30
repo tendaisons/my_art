@@ -24,6 +24,7 @@ class _AddPatientState extends State<AddPatient> {
     double fem = MediaQuery.of(context).size.width / baseWidth;
     double ffem = fem * 0.97;
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 235, 242, 255),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 235, 242, 255),
         title: Text(
