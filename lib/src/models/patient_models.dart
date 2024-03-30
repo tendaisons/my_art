@@ -1,8 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_art/src/constants/text_strings.dart';
 
 class Patient {
-
-  int id;
+  String id;
   String oiartnumber;
   String fullname;
   String phoneNo;
@@ -13,8 +13,8 @@ class Patient {
   String country;
   String province;
   String city;
-  String covidVaccination;
-  String diabetes;
+  String? covidVaccination;
+  String? diabetes;
   String note;
   String allergies;
   String? createdAt = DateTime.now().toString().substring(0, 10);
@@ -32,16 +32,17 @@ class Patient {
     required this.country,
     required this.province,
     required this.city,
-    required this.covidVaccination,
-    required this.diabetes,
+    this.covidVaccination,
+    this.diabetes,
     required this.note,
     required this.allergies,
     this.createdAt,
     this.updatedAt,
-})
+  });
 
   toJson() {
-      return {
+    return {
+      'id': id,
       'oiartnumber': oiartnumber,
       'name': fullname,
       'phone number': phoneNo,
@@ -53,21 +54,35 @@ class Patient {
       'province': province,
       'city': city,
       'note': note,
+      'diabetes': diabetes,
+      'covidVaccination': covidVaccination,
       'allergies': allergies,
-      
+      'createdAt': createdAt,
+      'updatedAt': updatedAt,
     };
   }
 
-  factory patient_models.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory Patient.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
-    return patient_models(
-      oiartnumber: document.oiartnumber,
-      tFullName: data["name"],
+    return Patient(
+      id: document.id,
+      oiartnumber: data["oiartnumber"],
+      fullname: data["name"],
+      phoneNo: data["phone number"],
       email: data["email"],
-      contact: data["status"],
-      image: data["image"],
-      date: data["date"],
-      amount: data['amount'],
-      );
-  }
+      age: data["age"],
+      gender: data['gender'],
+      address: data['address'],
+      country: data['country'],
+      province: data['province'],
+      city: data['city'],
+      note: data['note'],
+      diabetes: data['diabetes'],
+      covidVaccination: data['covidVaccination'],
+      allergies: data['allergies'],
+      createdAt: data['createdAt'],
+      updatedAt: data['updatedAt'],
+    );
+  }
 }

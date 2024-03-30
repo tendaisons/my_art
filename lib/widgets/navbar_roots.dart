@@ -4,6 +4,7 @@ import 'package:my_art/screens/messages_screen.dart';
 import 'package:my_art/screens/schedule_screen.dart';
 import 'package:my_art/screens/settings_screen.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/dashboard.dart';
+import 'package:my_art/src/features/portal/pages/patients/patients_screen.dart';
 
 class NavBarRoots extends StatefulWidget {
   @override
@@ -17,6 +18,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
     MessagesScreen(),
     ScheduleScreen(),
     SettingScreen(),
+    PatientsScreen(),
 
   ];
 
@@ -54,6 +56,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
                 icon: Icon(Icons.calendar_month_outlined), label: "Schedule"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: "Settings"),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: "Patients")
           ],
         ),
       ),

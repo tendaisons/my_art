@@ -1,8 +1,10 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:my_art/main.dart';
+import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
+import 'package:my_art/src/models/patient_models.dart';
 import 'package:my_art/utils.dart';
+import 'package:my_art/widgets/navbar_roots.dart';
 
 import '../src/constants/text_strings.dart';
 
@@ -18,6 +20,19 @@ class _AddPatientState extends State<AddPatient> {
   bool isLoading = false;
   String? _selectedValueCovid;
   String? _selectedValueDiabetes;
+
+// Generate Ids
+//   String generatePrimaryKey() {
+//     return Random().nextInt(1000000000).toString();
+//   }
+
+  String generatePrimaryKey() {
+    final int number = Random().nextInt(1000000000);
+    final String letter = String.fromCharCode(Random().nextInt(26) + 65); // Generates a random uppercase letter (A-Z)
+    return 'A$number$letter';
+  }
+
+  final controller = Get.put(PatientController());
   @override
   Widget build(BuildContext context) {
     double baseWidth = 498;
@@ -49,7 +64,7 @@ class _AddPatientState extends State<AddPatient> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.oiartnumberController,
                     validator: (value) => value!.isNumericOnly
                         ? null
                         : 'Please enter a valid OI ART Number',
@@ -59,17 +74,20 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
-                    validator: (value) => value!.isAlphabetOnly
-                        ? null
-                        : 'Please enter a valid Patient Full Name',
+                    controller: controller.nameController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a valid Patient Full Name';
+                      }
+                      return null;
+                    },
                     decoration: const InputDecoration(
                       hintText: patientName,
                     ),
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.phoneNumberController,
                     validator: (value) => value!.isNumericOnly
                         ? null
                         : 'Please enter a valid Patient Contact Number',
@@ -79,7 +97,7 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.emailController,
                     validator: (value) => value!.isEmail
                         ? null
                         : 'Please enter a valid Patient Email Address',
@@ -92,6 +110,10 @@ class _AddPatientState extends State<AddPatient> {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          validator: (value) => value!.isNumericOnly
+                              ? null
+                              : 'Please enter a valid Patient Age',
+                          controller: controller.ageController,
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: age,
@@ -102,6 +124,10 @@ class _AddPatientState extends State<AddPatient> {
                       const SizedBox(width: 25),
                       Expanded(
                         child: TextFormField(
+                          controller: controller.genderController,
+                          validator: (value) => value!.isAlphabetOnly
+                              ? null
+                              : 'Please enter a valid Patient Gender',
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: gender,
@@ -113,10 +139,13 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
-                    validator: (value) => value!.isAlphabetOnly
-                        ? null
-                        : 'Please enter a valid Address',
+                    controller: controller.addressController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter a valid Address';
+                      }
+                      return null;
+                    },
                     decoration: const InputDecoration(
                       hintText: 'Address',
                     ),
@@ -126,6 +155,10 @@ class _AddPatientState extends State<AddPatient> {
                     children: [
                       Expanded(
                         child: TextFormField(
+                          validator: (value) => value!.isAlphabetOnly
+                              ? null
+                              : 'Please enter a valid Country',
+                          controller: controller.countryController,
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: country,
@@ -136,6 +169,10 @@ class _AddPatientState extends State<AddPatient> {
                       const SizedBox(width: 25),
                       Expanded(
                         child: TextFormField(
+                          validator: (value) => value!.isAlphabetOnly
+                              ? null
+                              : 'Please enter a valid Province',
+                          controller: controller.provinceController,
                           expands: false,
                           decoration: const InputDecoration(
                             labelText: province,
@@ -147,7 +184,7 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.cityController,
                     validator: (value) => value!.isAlphabetOnly
                         ? null
                         : 'Please enter a valid City',
@@ -157,7 +194,7 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.allergiesController,
                     validator: (value) => value!.isAlphabetOnly
                         ? null
                         : 'Please enter a valid Allergies',
@@ -167,7 +204,7 @@ class _AddPatientState extends State<AddPatient> {
                   ),
                   SizedBox(height: 20),
                   TextFormField(
-                    //controller: controller.email,
+                    controller: controller.noteController,
                     validator: (value) => value!.isAlphabetOnly
                         ? null
                         : 'Please enter a valid Note',
@@ -230,24 +267,42 @@ class _AddPatientState extends State<AddPatient> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      onPressed: () {},
-                      // isLoading
-                      //     ? null
-                      //     : () {
-                      //   if (formKey.currentState!.validate()) {
-                      //     setState(() {
-                      //       isLoading = true;
-                      //     });
-                      //     SignInController.instance
-                      //         .logInUser(controller.email.text.trim(),
-                      //         controller.password.text.trim())
-                      //         .then((_) {
-                      //       setState(() {
-                      //         isLoading = false;
-                      //       });
-                      //     });
-                      //   }
-                      // },
+                      onPressed: isLoading
+                          ? null
+                          : () {
+                        if (formKey.currentState!.validate()) {
+                          setState(() {
+                            isLoading = true;
+                          });
+                          PatientController.instance
+                              .createPatient(
+                              Patient(
+                                  id: generatePrimaryKey(),
+                                  oiartnumber: controller.oiartnumberController.text.trim(),
+                                  fullname: controller.nameController.text.trim(),
+                                  phoneNo: controller.phoneNumberController.text.trim(),
+                                  email: controller.emailController.text.trim(),
+                                  age: controller.ageController.text.trim(),
+                                  gender: controller.genderController.text.trim(),
+                                  address: controller.addressController.text.trim(),
+                                  country: controller.countryController.text.trim(),
+                                  province: controller.provinceController.text.trim(),
+                                  city: controller.cityController.text.trim(),
+                                  note: controller.noteController.text.trim(),
+                                  allergies: controller.allergiesController.text.trim(),
+                                  diabetes: _selectedValueDiabetes,
+                                  covidVaccination: _selectedValueCovid,
+                                  createdAt: DateTime.now().toString().substring(0, 10),
+                                  updatedAt: DateTime.now().toString().substring(0, 10),
+                              ))
+                              .then((_) {
+                            setState(() {
+                              isLoading = false;
+                            });
+                            Get.to(() => NavBarRoots());
+                          });
+                        }
+                      },
                       child: isLoading
                           ? Container(
                               height: 16,
