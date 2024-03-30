@@ -1,3 +1,5 @@
+import 'package:my_art/src/constants/text_strings.dart';
+
 class Patient {
 
   int id;
@@ -39,7 +41,33 @@ class Patient {
 })
 
   toJson() {
-
+      return {
+      'oiartnumber': oiartnumber,
+      'name': fullname,
+      'phone number': phoneNo,
+      'email': email,
+      'age': age,
+      'gender': gender,
+      'address': address,
+      'country': country,
+      'province': province,
+      'city': city,
+      'note': note,
+      'allergies': allergies,
+      
+    };
   }
 
+  factory patient_models.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+    final data = document.data()!;
+    return patient_models(
+      oiartnumber: document.oiartnumber,
+      tFullName: data["name"],
+      email: data["email"],
+      contact: data["status"],
+      image: data["image"],
+      date: data["date"],
+      amount: data['amount'],
+      );
+  }
 }
