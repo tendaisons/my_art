@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:my_art/screens/home_screen.dart';
 import 'package:my_art/src/exceptions/delete_account_exception.dart';
 import 'package:my_art/src/exceptions/reset_password_exception.dart';
 import 'package:my_art/src/exceptions/sign_in_with_email_and_password_failure.dart';
