@@ -16,19 +16,17 @@ class MessagesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return Scaffold(
+        body: SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 40),
-          const Padding(
+          Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Text(
               "Messages",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(context).textTheme.titleMedium,
             ),
           ),
           const SizedBox(height: 30),
@@ -151,31 +149,25 @@ class MessagesScreen extends StatelessWidget {
                     "assets/images/${imgs[index]}",
                   ),
                 ),
-                title: const Text(
+                title: Text(
                   "Doctor Name",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium
                 ),
-                subtitle: const Text(
+                subtitle:  Text(
                   "Hello, Docotr, are you there? asd as d asd a sd asd as d s",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium
                 ),
-                trailing: const Text(
+                trailing: Text(
                   "12:30",
-                  style: TextStyle(fontSize: 15, color: Colors.black54),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
               );
             },
           )
         ],
       ),
-    );
+    ));
   }
 }
