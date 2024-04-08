@@ -33,5 +33,6 @@
             "statusBarItem.remoteBackground": "#7CB342"
         },
         "[Material Theme Ocean High Contrast]": {}
-    }
+    },
+    "cmake.configureOnOpen": false
 }

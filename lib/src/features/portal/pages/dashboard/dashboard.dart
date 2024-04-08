@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:my_art/screens/add-patient.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
-import 'package:my_art/src/models/patient_models.dart';
+import 'package:charts_flutter_new/flutter.dart' as charts;
+import 'package:my_art/screens/add-patient.dart';
 
 import '../../../../../utils.dart';
 
@@ -13,6 +12,45 @@ class DashboardXScreen extends StatefulWidget {
 
   @override
   State<DashboardXScreen> createState() => _DashboardXScreenState();
+}
+
+class PatientData {
+  final String type;
+  final int count;
+
+  PatientData(this.type, this.count);
+}
+
+List<charts.Series<PatientData, String>> _createSampleData() {
+  final int newPatients = getNewPatientsCount(); // Define newPatients
+  final int oldPatients = getOldPatientsCount(); // Define oldPatients
+
+  final data = [
+    PatientData('New', newPatients),
+    PatientData('Old', oldPatients),
+  ];
+
+  return [
+    charts.Series<PatientData, String>(
+      id: 'Patients',
+      domainFn: (PatientData patients, _) => patients.type,
+      measureFn: (PatientData patients, _) => patients.count,
+      colorFn: (PatientData patients, __) => patients.type == 'New'
+          ? charts.MaterialPalette.blue.shadeDefault
+          : charts.MaterialPalette.red.shadeDefault,
+      data: data,
+    )
+  ];
+}
+
+int getNewPatientsCount() {
+  // Replace this with your actual implementation
+  return 10;
+}
+
+int getOldPatientsCount() {
+  // Replace this with your actual implementation
+  return 20;
 }
 
 class _DashboardXScreenState extends State<DashboardXScreen> {
@@ -38,7 +76,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasData) {
-                      return  Padding(
+                      return Padding(
                         padding: const EdgeInsets.all(16),
                         child: Container(
                           padding: const EdgeInsets.all(16),
@@ -49,10 +87,12 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Patients Added Today',
@@ -100,10 +140,12 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                           child: Column(
                             children: [
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         'Total Patients',
@@ -114,7 +156,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     ],
                                   ),
                                   Text(
-                                      snapshot.data.toString(),
+                                    snapshot.data.toString(),
                                     style: Theme.of(context)
                                         .textTheme
                                         .headlineMedium,
@@ -659,12 +701,15 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       child: SizedBox(
                                         width: 92 * fem,
                                         height: 92 * fem,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(46 * fem),
-                                            border: Border.all(
-                                                color: const Color(0xff33d48e)),
+                                        child: AspectRatio(
+                                          aspectRatio:
+                                              1, // Use an aspect ratio of 1 for a square chart
+                                          child: charts.PieChart(
+                                            _createSampleData(),
+                                            animate: true,
+                                            defaultRenderer:
+                                                charts.ArcRendererConfig(
+                                                    arcWidth: 30),
                                           ),
                                         ),
                                       ),
