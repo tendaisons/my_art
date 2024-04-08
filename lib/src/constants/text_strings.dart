@@ -10,7 +10,7 @@ const String tForgetPassword = "Forget Password";
 const String tSignInWithGoogle = "Sign-In with Google";
 
 // -- Splash Screen Text
-const String tAppName = "My_art";
+const String tAppName = "My_Art";
 const String tAppTagLine = "Your Medical diary";
 const String tAppDescription = "Your Medical diary";
 
@@ -101,7 +101,6 @@ const String tFABBottomSheetOption1Text = "Take a Picture of the Plant";
 const String tFABBottomSheetOption2 = "Upload a Picture";
 const String tFABBottomSheetOption2Text = "Upload a Picture of the Plant";
 
-
 // Add Patient
 const String artNumber = "OI ART Number";
 const String patientName = "Patient Full Name";
@@ -113,4 +112,3 @@ const String save = "Save";
 const String country = "Country";
 const String province = "Province";
 const String city = "City";
-
