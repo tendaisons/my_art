@@ -26,7 +26,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
       appBar: AppBar(
         title: const Text('Dr. Tatenda Alexio'),
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -207,7 +207,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 540 * fem,
                                         height: 1108 * fem,
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xfff2f6ff),
                                           ),
                                         ),
@@ -227,7 +227,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xffffffff),
+                                            color: const Color(0xffffffff),
                                           ),
                                         ),
                                       ),
@@ -245,7 +245,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xffffffff),
+                                            color: const Color(0xffffffff),
                                           ),
                                         ),
                                       ),
@@ -263,10 +263,10 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xffffffff),
+                                            color: const Color(0xffffffff),
                                             boxShadow: [
                                               BoxShadow(
-                                                color: Color(0x3f000000),
+                                                color: const Color(0x3f000000),
                                                 offset:
                                                     Offset(0 * fem, 4 * fem),
                                                 blurRadius: 2 * fem,
@@ -292,7 +292,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 20 * ffem,
                                             fontWeight: FontWeight.w500,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff4b57a8),
+                                            color: const Color(0xff4b57a8),
                                           ),
                                         ),
                                       ),
@@ -313,7 +313,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 20 * ffem,
                                             fontWeight: FontWeight.w500,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff4b57a8),
+                                            color: const Color(0xff4b57a8),
                                           ),
                                         ),
                                       ),
@@ -334,7 +334,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 20 * ffem,
                                             fontWeight: FontWeight.w500,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff4b57a8),
+                                            color: const Color(0xff4b57a8),
                                           ),
                                         ),
                                       ),
@@ -367,7 +367,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -388,7 +388,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -409,7 +409,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -430,7 +430,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -451,7 +451,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -472,7 +472,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -493,7 +493,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -514,7 +514,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             fontSize: 16 * ffem,
                                             fontWeight: FontWeight.w400,
                                             height: 1.5 * ffem / fem,
-                                            color: Color(0xff24284d),
+                                            color: const Color(0xff24284d),
                                           ),
                                         ),
                                       ),
@@ -544,7 +544,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xff303e9f),
+                                            color: const Color(0xff303e9f),
                                           ),
                                         ),
                                       ),
@@ -562,7 +562,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xff303e9f),
+                                            color: const Color(0xff303e9f),
                                           ),
                                         ),
                                       ),
@@ -580,7 +580,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           decoration: BoxDecoration(
                                             borderRadius:
                                                 BorderRadius.circular(24 * fem),
-                                            color: Color(0xff303e9f),
+                                            color: const Color(0xff303e9f),
                                           ),
                                         ),
                                       ),
@@ -596,7 +596,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 15 * fem,
                                         height: 15 * fem,
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xff33d48e),
                                           ),
                                         ),
@@ -612,7 +612,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 15 * fem,
                                         height: 15 * fem,
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xff33d48e),
                                           ),
                                         ),
@@ -628,7 +628,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 15 * fem,
                                         height: 15 * fem,
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xff64ace6),
                                           ),
                                         ),
@@ -644,7 +644,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 15 * fem,
                                         height: 15 * fem,
                                         child: Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xff64ace6),
                                           ),
                                         ),
@@ -664,7 +664,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(46 * fem),
                                             border: Border.all(
-                                                color: Color(0xff33d48e)),
+                                                color: const Color(0xff33d48e)),
                                           ),
                                         ),
                                       ),
@@ -683,7 +683,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             borderRadius:
                                                 BorderRadius.circular(46 * fem),
                                             border: Border.all(
-                                                color: Color(0xff33d48e)),
+                                                color: const Color(0xff33d48e)),
                                           ),
                                         ),
                                       ),
