@@ -4,7 +4,7 @@ import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
 import 'package:charts_flutter_new/flutter.dart' as charts;
 import 'package:my_art/screens/add-patient.dart';
-
+import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../utils.dart';
 
 class DashboardXScreen extends StatefulWidget {
@@ -17,30 +17,41 @@ class DashboardXScreen extends StatefulWidget {
 class PatientData {
   final String type;
   final int count;
+  final Color color;
 
-  PatientData(this.type, this.count);
+  PatientData(this.type, this.count, this.color);
 }
 
-List<charts.Series<PatientData, String>> _createSampleData() {
+class MedicationData {
+  final String type;
+  final int count;
+  final Color color;
+
+  MedicationData(this.type, this.count, this.color);
+}
+
+List<PatientData> _createPatientData() {
   final int newPatients = getNewPatientsCount(); // Define newPatients
   final int oldPatients = getOldPatientsCount(); // Define oldPatients
 
   final data = [
-    PatientData('New', newPatients),
-    PatientData('Old', oldPatients),
+    PatientData('New', newPatients, const Color(0xff33d48e)),
+    PatientData('Old', oldPatients, const Color(0xff64ace6)),
   ];
 
-  return [
-    charts.Series<PatientData, String>(
-      id: 'Patients',
-      domainFn: (PatientData patients, _) => patients.type,
-      measureFn: (PatientData patients, _) => patients.count,
-      colorFn: (PatientData patients, __) => patients.type == 'New'
-          ? charts.MaterialPalette.blue.shadeDefault
-          : charts.MaterialPalette.red.shadeDefault,
-      data: data,
-    )
+  return data;
+}
+
+List<MedicationData> _createMedicationData() {
+  final int pendingMedication = getPendingCount(); // Define newPatients
+  final int completedMedication = getCompletedCount(); // Define oldPatients
+
+  final data = [
+    MedicationData('Pending', pendingMedication, const Color(0xff33d48e)),
+    MedicationData('Completed', completedMedication, const Color(0xff64ace6)),
   ];
+
+  return data;
 }
 
 int getNewPatientsCount() {
@@ -49,6 +60,16 @@ int getNewPatientsCount() {
 }
 
 int getOldPatientsCount() {
+  // Replace this with your actual implementation
+  return 20;
+}
+
+int getPendingCount() {
+  // Replace this with your actual implementation
+  return 60;
+}
+
+int getCompletedCount() {
   // Replace this with your actual implementation
   return 20;
 }
@@ -694,42 +715,55 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     ),
                                   ),
                                   Positioned(
-                                    // ellipse1iCP (13:19)
                                     left: 100 * fem,
                                     top: 342 * fem,
                                     child: Align(
                                       child: SizedBox(
                                         width: 92 * fem,
                                         height: 92 * fem,
-                                        child: AspectRatio(
-                                          aspectRatio:
-                                              1, // Use an aspect ratio of 1 for a square chart
-                                          child: charts.PieChart(
-                                            _createSampleData(),
-                                            animate: true,
-                                            defaultRenderer:
-                                                charts.ArcRendererConfig(
-                                                    arcWidth: 30),
-                                          ),
+                                        child: SfCircularChart(
+                                          series: <CircularSeries>[
+                                            DoughnutSeries<PatientData, String>(
+                                              dataSource: _createPatientData(),
+                                              pointColorMapper:
+                                                  (PatientData data, _) =>
+                                                      data.color,
+                                              xValueMapper:
+                                                  (PatientData data, _) =>
+                                                      data.type,
+                                              yValueMapper:
+                                                  (PatientData data, _) =>
+                                                      data.count,
+                                            )
+                                          ],
                                         ),
                                       ),
                                     ),
                                   ),
                                   Positioned(
-                                    // ellipse2cHm (14:95)
                                     left: 349 * fem,
                                     top: 342 * fem,
                                     child: Align(
                                       child: SizedBox(
                                         width: 92 * fem,
                                         height: 92 * fem,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(46 * fem),
-                                            border: Border.all(
-                                                color: const Color(0xff33d48e)),
-                                          ),
+                                        child: SfCircularChart(
+                                          series: <CircularSeries>[
+                                            DoughnutSeries<MedicationData,
+                                                String>(
+                                              dataSource:
+                                                  _createMedicationData(),
+                                              pointColorMapper:
+                                                  (MedicationData data, _) =>
+                                                      data.color,
+                                              xValueMapper:
+                                                  (MedicationData data, _) =>
+                                                      data.type,
+                                              yValueMapper:
+                                                  (MedicationData data, _) =>
+                                                      data.count,
+                                            )
+                                          ],
                                         ),
                                       ),
                                     ),
