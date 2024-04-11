@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
-import 'package:charts_flutter_new/flutter.dart' as charts;
 import 'package:my_art/screens/add-patient.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../utils.dart';
