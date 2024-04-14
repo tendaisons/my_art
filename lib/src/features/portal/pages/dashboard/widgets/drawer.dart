@@ -35,7 +35,7 @@ class MyDrawer extends StatelessWidget {
               }),
           ListTile(
             leading: const Icon(LineAwesomeIcons.book),
-            title: const Text('Farming Tips'),
+            title: const Text('Medication Tips'),
             onTap: () {
               Get.back();
               //Get.to(() => const FarmingTips());
@@ -62,7 +62,6 @@ class MyDrawer extends StatelessWidget {
             onTap: () {
               Get.back();
               //Get.to(() => const ViewAll());
-
             },
           ),
           ListTile(
