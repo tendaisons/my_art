@@ -97,29 +97,38 @@ class AuthenticationRepository extends GetxController {
   }
 
   // Sign up with Google
-  Future<UserCredential?> signInWithGoogle([respose]) async {
-    // Auto Generate password for google sign in which consist of Alpha numeric characters
-
+  Future<UserCredential?> signInWithGoogle() async {
     try {
       // Trigger the authentication flow
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
+      if (googleUser == null) {
+        print('Google Sign-In was cancelled.');
+        return null;
+      }
+
       // Obtain the auth details from the request
       final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
+      await googleUser.authentication;
+
+      if (googleAuth == null) {
+        print('Failed to get Google authentication details.');
+        return null;
+      }
 
       // Create a new credential
       final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth?.accessToken,
-        idToken: googleAuth?.idToken,
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
       );
 
       // Once signed in, return the UserCredential
-      final response = await FirebaseAuth.instance.signInWithCredential(credential);
+      final response =
+      await FirebaseAuth.instance.signInWithCredential(credential);
 
-      //-check if the is successfully created in the firebase
+      // Check if the user is successfully created in Firebase
       if (response.user != null) {
-        // Save create user (email, password, fullname, phoneNo, createdAt) in firestore in collection called "Users" using UserModel
+        // Save created user in Firestore
         await FirebaseFirestore.instance
             .collection('Users')
             .doc(response.user?.uid)
@@ -127,17 +136,21 @@ class AuthenticationRepository extends GetxController {
           'Email': response.user?.email,
           'Password': "Not Provided",
           'Fullname': response.user?.displayName,
-          // GetGoogle user's phone umber else set to "Not Provided"
           'PhoneNo': response.user?.phoneNumber ?? "Not Provided",
           'CreatedAt': DateTime.now().toString().substring(0, 10),
+          'DateofBirth': "Not Provided",
+          'Location': "Not Provided",
         });
 
         return response;
       } else {
-        //---if some errors occurres return null
+        // If some errors occur, return null
+        print('Failed to create user in Firebase.');
         return null;
       }
-    } catch (e) {
+    } catch (e, stackTrace) {
+      print('Error signing in with Google: $e');
+      print(stackTrace);
       return null;
     }
   }
