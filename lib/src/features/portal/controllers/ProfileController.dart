@@ -7,11 +7,15 @@ import '../../../repositories/user_repository/user_repository.dart';
 class ProfileController extends GetxController {
   static ProfileController get instance => Get.find();
 
+
+  Rx<UserModel?> userData = Rx<UserModel?>(null);
+
   // Initialize get user data
   @override
   void onInit() {
     super.onInit();
     getUserData();
+    getUserInfo();
   }
 
 // Repositories
@@ -27,6 +31,21 @@ class ProfileController extends GetxController {
       Get.snackbar("Error", "Signin to continue");
     }
   }
+
+  getUserInfo() async {
+    final email = _authRepo.firebaseUser.value?.email;
+    if (email != null) {
+      try {
+        UserModel user = await _userRepo.getUserDetails(email);
+        userData.value = user;
+      } catch (e) {
+        Get.snackbar("Error", "Failed to fetch user data");
+      }
+    } else {
+      Get.snackbar("Error", "Sign in to continue");
+    }
+  }
+
 
   
   updateRecord(UserModel user) async {

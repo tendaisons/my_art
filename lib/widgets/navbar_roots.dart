@@ -15,10 +15,11 @@ class _NavBarRootsState extends State<NavBarRoots> {
   int _selectedIndex = 0;
   final _screens = [
     DashboardXScreen(),
-    MessagesScreen(),
+   // MessagesScreen(),
+    PatientsScreen(),
     ScheduleScreen(),
     SettingScreen(),
-    PatientsScreen(),
+
 
   ];
 
@@ -47,16 +48,17 @@ class _NavBarRootsState extends State<NavBarRoots> {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home_filled), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(
-                  CupertinoIcons.chat_bubble_text_fill,
-                ),
-                label: "Messages"),
+            BottomNavigationBarItem(icon: Icon(Icons.people), label: "Patients"),
+            // BottomNavigationBarItem(
+            //     icon: Icon(
+            //       CupertinoIcons.chat_bubble_text_fill,
+            //     ),
+            //     label: "Messages"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.calendar_month_outlined), label: "Schedule"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: "Settings"),
-            BottomNavigationBarItem(icon: Icon(Icons.people), label: "Patients")
+
           ],
         ),
       ),

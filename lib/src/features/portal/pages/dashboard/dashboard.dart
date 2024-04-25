@@ -1,16 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/features/portal/controllers/ProfileController.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
 import 'package:my_art/screens/add-patient.dart';
-import 'package:my_art/src/repositories/user_repository/user_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../utils.dart';
-import '../../../../models/app_models.dart';
 
 class DashboardXScreen extends StatefulWidget {
+
+
+
+
   const DashboardXScreen({super.key});
 
   @override
@@ -78,6 +79,16 @@ int getCompletedCount() {
 }
 
 class _DashboardXScreenState extends State<DashboardXScreen> {
+  String greetings() {
+    final hour = TimeOfDay.now().hour;
+    if (hour < 12) {
+      return 'Morning';
+    } else if (hour < 17) {
+      return 'Afternoon';
+    }
+    return 'Evening';
+  }
+
   final controller = Get.put(PatientController());
   final profileController = Get.put(ProfileController());
   @override
@@ -87,8 +98,23 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
     double ffem = fem * 0.97;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dr. Tatenda Alexio Shambare')
-
+       title: Obx(() {
+         return RichText(
+            text: TextSpan(
+              style: Theme.of(context).textTheme.headline6,
+              children: [
+                TextSpan(text: 'Hey, Good ${greetings()} 👋\n',
+                  style: TextStyle( fontSize: 15),
+                ),
+                TextSpan(
+                  text: 'Doctor ${profileController.userData.value?.fullname ?? ""}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                ),
+              ],
+            ),
+         );
+       }
+      ),
       ),
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
