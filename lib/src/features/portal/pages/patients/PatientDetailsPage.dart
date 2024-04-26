@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:my_art/src/constants/colors.dart';
 import 'package:my_art/src/features/portal/pages/patients/widgets/AddMedication.dart';
 
+import '../../../../../screens/edit-patient.dart';
 import '../../../../common_widgets/math.dart';
 import '../../../../constants/dimensions.dart';
 import '../../../../constants/sizes.dart';
@@ -12,20 +14,36 @@ class PatientDetailsPage extends StatefulWidget {
 
   const PatientDetailsPage({super.key, this.item});
 
+
   @override
   State<PatientDetailsPage> createState() => _PatientDetailsPageState();
 }
 
 class _PatientDetailsPageState extends State<PatientDetailsPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    print(widget.item);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Patient Details'),
+
+        actions: [
+          IconButton(
+            icon: Icon(LineAwesomeIcons.user_edit),
+            onPressed: () {
+              Get.to(() => EditPatient(item: widget.item));
+            },
+          ),
+        ],
       ),
-      body: Stack(
+      body: Column(
         children: [
-          SizedBox(height: 30),
          Card(
                 clipBehavior: Clip.antiAlias,
                 elevation: 0,
@@ -40,7 +58,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 15),
+                            horizontal: 16, vertical: 16),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,43 +80,77 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                   size: 20,
                                 ),
                                 const SizedBox(width: 5),
-                                Text(widget.item.phoneNo,
+                                Text(widget.item.city + " " + widget.item.country,
                                     maxLines: null,
                                     textAlign: TextAlign.left,
                                     style: TextTheme().bodyLarge),
                               ],
                             ),
                             const SizedBox(height: 10),
-                            Text(
+                            const Text(
                               'Patient Details',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16.0,
                               ),
                             ),
-                            const SizedBox(height: 8),
-                            Text(widget.item.email,
+                            const SizedBox(height: 10),
+                            Text("Oiart Number: " + widget.item.oiartnumber,
                                 style: TextTheme().bodyMedium),
-                            const SizedBox(height: 8),
-                            Text(
-                              'Decription of Business Venture',
-                              style: TextTheme().headlineMedium,
-                            ),
-                            const SizedBox(height: 8),
-                            Text(widget.item.country,
-                                maxLines: null,
+                            const SizedBox(height: 10),
+                            Text("Phone Number: " + widget.item.phoneNo,
                                 textAlign: TextAlign.left,
                                 style: const TextTheme().headlineMedium),
                             const SizedBox(height: 10),
-                            Text(
-                              'Financials',
-                              style: TextTheme().headlineMedium,
+                            Text("E-mail: ${widget.item.email}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Age: ${widget.item.age}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Gender: ${widget.item.gender}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Address: ${widget.item.address}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Province: ${widget.item.province}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("City: ${widget.item.city}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Covid-19 Vaccinated: ${widget.item.covidVaccination}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+                            Text("Diabetic: ${widget.item.diabetes}",
+                                style: Theme.of(context).textTheme.bodyMedium),
+                            const SizedBox(height: 10),
+
+                            const Text(
+                              'Patient Notes',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                              ),
                             ),
-                            const SizedBox(height: 8),
-                            Text("Amount Raised: ${widget.item.country}",
+
+                            Text("${widget.item.note}",
                                 style: Theme.of(context).textTheme.bodyMedium),
-                            Text("Goal: ${widget.item.city}",
+
+                            const SizedBox(height: 10),
+                            const Text(
+                              'Patient Alleges',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16.0,
+                              ),
+                            ),
+
+                            Text("${widget.item.allergies}",
                                 style: Theme.of(context).textTheme.bodyMedium),
+
+
                           ],
                         ),
                       ),

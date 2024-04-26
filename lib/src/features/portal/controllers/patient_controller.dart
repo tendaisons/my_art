@@ -8,6 +8,26 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class PatientController extends GetxController {
   static PatientController get instance => Get.find();
 
+  @override
+  void dispose() {
+    oiartnumberController.dispose();
+    nameController.dispose();
+    phoneNumberController.dispose();
+    emailController.dispose();
+    ageController.dispose();
+    genderController.dispose();
+    addressController.dispose();
+    countryController.dispose();
+    provinceController.dispose();
+    cityController.dispose();
+    noteController.dispose();
+    diabetesController.dispose();
+    covidVaccinationController.dispose();
+    allergiesController.dispose();
+    super.dispose();
+  }
+
+
   /// TextField Controllers to get data from TextFields
   TextEditingController oiartnumberController = TextEditingController();
   TextEditingController nameController = TextEditingController();
@@ -30,23 +50,50 @@ class PatientController extends GetxController {
   // Get all patients from firestore
   Future <List<Patient>> getAllPatients() async => await _patientRepo.getAllPatients();
 
-
-  updateRecord(Patient patient) async {
-    await _patientRepo.updatePatientRecord(patient);
-
+  // Search for patient by name
+  Future<List<Patient>> searchPatient(String name) async {
+    try {
+      final snapshot = await _patientRepo.getAllPatients();
+      final searchResults = snapshot.where((element) {
+        return (element as Patient).fullname.toLowerCase().contains(name.toLowerCase());
+      }).toList();
+      return searchResults.cast<Patient>(); // Ensure the list is of type Patient
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to search patients: $e',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red);
+      return [];
+    }
   }
+
+
+  updatePatient(Patient patient) async {
+    try {
+      await _patientRepo.updatePatientRecord(patient);
+      Get.snackbar('Success', 'Patient details updated successfully',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.green.withOpacity(0.1),
+          colorText: Colors.green);
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to update patient details: $e',
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.red.withOpacity(0.1),
+          colorText: Colors.red);
+    }
+  }
+
 
   createPatient(Patient patient) async {
     await _patientRepo.createPatient(patient);
   }
 
-// Basing on the current date i want to show the number of patients that have been added today
-//   Future <int> getPatientsAddedToday() async {
-//     final snapshot = await _patientRepo.getAllPatients();
-//     final today = DateTime.now();
-//     final todayPatients = snapshot.where((element) => element.createdAt.day == today.day).toList();
-//     return todayPatients.length;
-//   }
+  // Get Patient Details
+  Future <Patient?> getPatientDetails(String id) async {
+    final snapshot = await _patientRepo.getPatientDetails(id);
+    return snapshot;
+  }
+
   Future<int> getPatientsAddedToday() async {
     final snapshot = await _patientRepo.getAllPatients();
     final today = DateTime.now();
