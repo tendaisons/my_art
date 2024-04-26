@@ -8,6 +8,14 @@ class UserRepository extends GetxController {
 
   final _db = FirebaseFirestore.instance;
 
+  var user = UserModel(email: '', fullname: '', phoneNo: '', location: '', dateofbirth: '').obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    getUserDetails("email");
+  }
+
   createUser(UserModel user) async {
     await _db
         .collection("Users")
@@ -34,6 +42,7 @@ class UserRepository extends GetxController {
     final snapshot =
         await _db.collection("Users").where("Email", isEqualTo: email).get();
     final userData = snapshot.docs.map((e) => UserModel.fromSnapshot(e)).single;
+    user.value = userData;
     return userData;
   }
 

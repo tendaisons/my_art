@@ -8,6 +8,7 @@ static PatientRepository get instance => Get.find();
 
 final _db = FirebaseFirestore.instance;
 
+
 createPatient(Patient patient) {
   _db.collection("Patients").add(patient.toJson()).whenComplete(
         () => Get.snackbar('Success', 'Patient Saved Successfully',
@@ -53,11 +54,19 @@ updatePatientRecord(Patient patient) async {
   });
 }
 
-  Future <Patient> getPatientDetails(String id) async {
-    final snapshot = await _db.collection("Patients").where("id", isEqualTo: id).get();
-    final userData = snapshot.docs.map((e) => Patient.fromSnapshot(e)).single;
-    return userData;
+  Future<Patient> getPatientDetails(String id) async {
+    try {
+      final snapshot = await _db.collection("Patients").where("id", isEqualTo: id).get();
+      if (snapshot.docs.isNotEmpty) {
+        return Patient.fromSnapshot(snapshot.docs.first);
+      } else {
+        throw Exception('Patient not found');
+      }
+    } catch (e) {
+      throw Exception('Failed to fetch patient details: $e');
+    }
   }
+
 
   // Count Number of Patient records in the collection
   Future<int> getPatientCount() async {
