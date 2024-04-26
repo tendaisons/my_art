@@ -8,6 +8,7 @@ static PatientRepository get instance => Get.find();
 
 final _db = FirebaseFirestore.instance;
 
+
 createPatient(Patient patient) {
   _db.collection("Patients").add(patient.toJson()).whenComplete(
         () => Get.snackbar('Success', 'Patient Saved Successfully',
