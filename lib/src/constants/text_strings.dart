@@ -8,6 +8,8 @@ const String tPassword = "Password";
 const String tFullName = "Full Name";
 const String tForgetPassword = "Forget Password";
 const String tSignInWithGoogle = "Sign-In with Google";
+const String tUpdate = "Update";
+
 
 // -- Splash Screen Text
 const String tAppName = "My_Art";

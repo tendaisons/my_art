@@ -1,16 +1,17 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/features/portal/controllers/ProfileController.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
 import 'package:my_art/screens/add-patient.dart';
-import 'package:my_art/src/repositories/user_repository/user_repository.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../utils.dart';
-import '../../../../models/app_models.dart';
 
 class DashboardXScreen extends StatefulWidget {
+
+
+
+
   const DashboardXScreen({super.key});
 
   @override
@@ -78,6 +79,16 @@ int getCompletedCount() {
 }
 
 class _DashboardXScreenState extends State<DashboardXScreen> {
+  String greetings() {
+    final hour = TimeOfDay.now().hour;
+    if (hour < 12) {
+      return 'Morning';
+    } else if (hour < 17) {
+      return 'Afternoon';
+    }
+    return 'Evening';
+  }
+
   final controller = Get.put(PatientController());
   final profileController = Get.put(ProfileController());
   @override
@@ -87,8 +98,23 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
     double ffem = fem * 0.97;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dr. Tatenda Alexio Shambare')
-
+       title: Obx(() {
+         return RichText(
+            text: TextSpan(
+              style: Theme.of(context).textTheme.headline6,
+              children: [
+                TextSpan(text: 'Hey, Good ${greetings()} 👋\n',
+                  style: TextStyle( fontSize: 12),
+                ),
+                TextSpan(
+                  text: 'Doctor ${profileController.userData.value?.fullname ?? ""}',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                ),
+              ],
+            ),
+         );
+       }
+      ),
       ),
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
@@ -283,6 +309,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     ),
                                   ),
 
+                                  // Patient Background
+
                                   Positioned(
                                     // rectangle4rST (13:6)
                                     left: 32 * fem,
@@ -301,6 +329,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                  // Medication Background
                                   Positioned(
                                     // rectangle13wio (14:91)
                                     left: 281 * fem,
@@ -319,6 +349,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                  //Treatment Background
                                   Positioned(
                                     // rectangle6qZH (13:8)
                                     left: 32 * fem,
@@ -345,6 +377,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                // Patient
                                   Positioned(
                                     // patientWvK (13:24)
                                     left: 79 * fem,
@@ -366,6 +400,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                  // Treatment
                                   Positioned(
                                     // treatmentMg3 (14:101)
                                     left: 79 * fem,
@@ -387,6 +423,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                  // Medication
                                   Positioned(
                                     // medicationmzf (14:85)
                                     left: 328 * fem,
@@ -408,6 +446,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+
                                   Positioned(
                                     left: 85 * fem,
                                     top: 162 * fem,
@@ -419,7 +459,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       },
                                     ),
                                   ),
-
+                                  // New -> Patient
                                   Positioned(
                                     // newoK5 (13:34)
                                     left: 86 * fem,
@@ -441,6 +481,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+                                  // Pending -> Medication
                                   Positioned(
                                     // pendingf6P (14:86)
                                     left: 335 * fem,
@@ -462,6 +504,8 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
+
+
                                   Positioned(
                                     // ZhZ (13:36)
                                     left: 227 * fem,
@@ -471,7 +515,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         width: 6 * fem,
                                         height: 24 * fem,
                                         child: Text(
-                                          '1 hee',
+                                          '100',
                                           style: SafeGoogleFont(
                                             'Poppins',
                                             fontSize: 16 * ffem,
