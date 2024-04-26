@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_art/screens/profile_screen.dart';
 import 'package:my_art/src/features/portal/controllers/ProfileController.dart';
 import 'package:my_art/src/models/app_models.dart';
 import 'package:my_art/src/repositories/authentication_repository/authentication_repository.dart';
@@ -53,7 +54,9 @@ class SettingScreen extends StatelessWidget {
                         ),
                         const Divider(height: 50),
                         ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Get.to(() => ProfileScreen());
+                          },
                           leading: Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
@@ -225,8 +228,16 @@ class SettingScreen extends StatelessWidget {
                   return const Center(child: Text('Something went wrong'));
                 }
               } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: const EdgeInsets.only(top: 500),
+                      child: const CircularProgressIndicator(
+                      )
+                      )
+                    ],
+                  ),
                 );
               }
             },
