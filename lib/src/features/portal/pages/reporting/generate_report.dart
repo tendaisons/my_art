@@ -8,8 +8,6 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:share_plus/share_plus.dart';
 
-
-
 Future<Uint8List> getImageFileFromAssets(String path) async {
   final byteData = await rootBundle.load('assets/$path');
 
@@ -56,87 +54,94 @@ Future<bool> makeReport({item}) async {
                   crossAxisAlignment: pw.CrossAxisAlignment.center,
                   children: [
                     pw.Spacer(),
-                    pw.SizedBox(height: 10,),
+                    pw.SizedBox(
+                      height: 10,
+                    ),
                     pw.Text("My_Art",
-                        style: pw.
-                        TextStyle(
+                        style: pw.TextStyle(
                             color: PdfColors.black,
                             fontSize: 40,
                             fontWeight: pw.FontWeight.bold)),
                     pw.Spacer(),
                   ]),
               pw.Spacer(flex: 2),
-
-          pw.Column(
-            crossAxisAlignment: pw.CrossAxisAlignment.start,
-            children: [
-              pw.Padding(
-                padding: pw.EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: pw.Column(
-                  crossAxisAlignment: pw.CrossAxisAlignment.start,
-                  children: [
-                    pw.Text(item.fullname,
-                        style: pw.TextStyle(fontSize: 18, fontWeight: pw.FontWeight.bold)),
-                    pw.SizedBox(height: 8),
-                    pw.Row(
+              pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Padding(
+                    padding:
+                        pw.EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                    child: pw.Column(
+                      crossAxisAlignment: pw.CrossAxisAlignment.start,
                       children: [
-                        pw.SizedBox(width: 5),
-                        pw.Text(item.city + " " + item.country),
+                        pw.Text(item.fullname,
+                            style: pw.TextStyle(
+                                fontSize: 18, fontWeight: pw.FontWeight.bold)),
+                        pw.SizedBox(height: 8),
+                        pw.Row(
+                          children: [
+                            pw.SizedBox(width: 5),
+                            pw.Text(item.city + " " + item.country),
+                          ],
+                        ),
+                        pw.SizedBox(height: 10),
+                        pw.Text('Patient Details',
+                            style: pw.TextStyle(
+                                fontSize: 16, fontWeight: pw.FontWeight.bold)),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Oiart Number: ${item.oiartnumber}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Phone Number: ${item.phoneNo}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("E-mail: ${item.email}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Age: ${item.age}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Gender: ${item.gender}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Address: ${item.address}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Province: ${item.province}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("City: ${item.city}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text(
+                            "Covid-19 Vaccinated: ${item.covidVaccination}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text("Diabetic: ${item.diabetes}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text('Patient Notes',
+                            style: pw.TextStyle(
+                                fontSize: 16, fontWeight: pw.FontWeight.bold)),
+                        pw.SizedBox(height: 10),
+                        pw.Text("${item.note}"),
+                        pw.SizedBox(height: 10),
+                        pw.Text('Patient Alleges',
+                            style: pw.TextStyle(
+                                fontSize: 16, fontWeight: pw.FontWeight.bold)),
+                        pw.SizedBox(height: 10),
+                        pw.Text("${item.allergies}"),
                       ],
                     ),
-                    pw.SizedBox(height: 10),
-                    pw.Text('Patient Details', style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold)),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Oiart Number: ${item.oiartnumber}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Phone Number: ${item.phoneNo}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("E-mail: ${item.email}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Age: ${item.age}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Gender: ${item.gender}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Address: ${item.address}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Province: ${item.province}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("City: ${item.city}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Covid-19 Vaccinated: ${item.covidVaccination}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text("Diabetic: ${item.diabetes}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text('Patient Notes', style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold)),
-                    pw.SizedBox(height: 10),
-                    pw.Text("${item.note}"),
-                    pw.SizedBox(height: 10),
-                    pw.Text('Patient Alleges', style: pw.TextStyle(fontSize: 16, fontWeight: pw.FontWeight.bold)),
-                    pw.SizedBox(height: 10),
-                    pw.Text("${item.allergies}"),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ],
-          ),
               pw.Spacer(flex: 2),
               pw.Row(
                   mainAxisAlignment: pw.MainAxisAlignment.center,
                   crossAxisAlignment: pw.CrossAxisAlignment.center,
                   children: [
                     pw.Spacer(),
-                    pw.SizedBox(height: 10,),
+                    pw.SizedBox(
+                      height: 10,
+                    ),
                     pw.Text("Generated by: ${user.email}",
-                        style: pw.
-                        TextStyle(
+                        style: pw.TextStyle(
                             color: PdfColors.black,
                             fontSize: 10,
                             fontWeight: pw.FontWeight.bold)),
                     pw.Spacer(),
-                  ]
-
-              ),
-
+                  ]),
             ]),
       ),
     ),
@@ -153,7 +158,7 @@ Future<bool> makeReport({item}) async {
   final file = File('$pathdir/Report_$name.pdf');
   final file2 = await file.writeAsBytes(await pdf.save());
   // ignore: deprecated_member_use
-  Share.shareFiles([file.path]);
+  // Share.shareFiles([file.path]);
   // Save pdf to Download folder
   await file2.copy('$downloads/Report_$name.pdf');
 
