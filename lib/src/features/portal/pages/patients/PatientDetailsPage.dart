@@ -226,11 +226,8 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                         setState(() {
                                           isLoading = true;
                                         });
-                                        bool result = await makeReport(
-
-                                            // Image
-
-                                            );
+                                        bool result =
+                                            await createReport(widget.item);
                                         setState(() {
                                           isLoading = false;
                                         });
