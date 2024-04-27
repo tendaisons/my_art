@@ -23,7 +23,9 @@ class PatientController extends GetxController {
     diabetesController.dispose();
     covidVaccinationController.dispose();
     allergiesController.dispose();
-
+    amountofMedicationController.dispose();
+    medication_TypeController.dispose();
+    examinationController.dispose();
     super.dispose();
   }
 
@@ -42,6 +44,9 @@ class PatientController extends GetxController {
   TextEditingController diabetesController = TextEditingController();
   TextEditingController covidVaccinationController = TextEditingController();
   TextEditingController allergiesController = TextEditingController();
+  TextEditingController medication_TypeController = TextEditingController();
+  TextEditingController examinationController = TextEditingController();
+  TextEditingController amountofMedicationController = TextEditingController();
 
   // Repositories
   final _patientRepo = Get.put(PatientRepository());

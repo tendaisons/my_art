@@ -199,7 +199,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                   AddMedicationsWidget(
                                     onTap: () {
                                       //Navigator.pop(context);
-                                      //  Get.to(() => const AddMed());
+                                      Get.to(() => const AddMed());
                                     },
                                     title: "Add Medications",
                                     subTitle: "Add Patient Medications",
