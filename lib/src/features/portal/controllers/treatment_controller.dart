@@ -1,29 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/models/patient_models.dart';
+import 'package:my_art/src/models/treatment_models.dart';
 import 'package:my_art/src/repositories/patient_repository/patient_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:my_art/src/repositories/treatment_repository/treatment_repository.dart';
 
-class PatientController extends GetxController {
-  static PatientController get instance => Get.find();
+class TreatmentController extends GetxController {
+  static TreatmentController get instance => Get.find();
 
   @override
   void dispose() {
-    oiartnumberController.dispose();
-    nameController.dispose();
     phoneNumberController.dispose();
-    emailController.dispose();
-    ageController.dispose();
-    genderController.dispose();
-    addressController.dispose();
-    countryController.dispose();
-    provinceController.dispose();
-    cityController.dispose();
-    noteController.dispose();
-    diabetesController.dispose();
-    covidVaccinationController.dispose();
     allergiesController.dispose();
-
+    amountofMedicationController.dispose();
+    medicationtypeController.dispose();
+    examinationController.dispose();
     super.dispose();
   }
 
@@ -31,29 +23,22 @@ class PatientController extends GetxController {
   TextEditingController oiartnumberController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController ageController = TextEditingController();
-  TextEditingController genderController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController countryController = TextEditingController();
-  TextEditingController provinceController = TextEditingController();
-  TextEditingController cityController = TextEditingController();
-  TextEditingController noteController = TextEditingController();
-  TextEditingController diabetesController = TextEditingController();
-  TextEditingController covidVaccinationController = TextEditingController();
   TextEditingController allergiesController = TextEditingController();
+  TextEditingController medicationtypeController = TextEditingController();
+  TextEditingController examinationController = TextEditingController();
+  TextEditingController amountofMedicationController = TextEditingController();
 
   // Repositories
-  final _patientRepo = Get.put(PatientRepository());
+  final _treatmentRepo = Get.put(TreatmentRepository());
 
   // Get all patients from firestore
-  Future<List<Patient>> getAllPatients() async =>
-      await _patientRepo.getAllPatients();
+  Future<List<Treatment>> getAllTreatments() async =>
+      await _treatmentRepo.getAllTreatments();
 
   // Search for patient by name
-  Future<List<Patient>> searchPatient(String name) async {
+  Future<List<Treatment>> searchTreatment(String name) async {
     try {
-      final snapshot = await _patientRepo.getAllPatients();
+      final snapshot = await _treatmentRepo.getAllTreatments();
       final searchResults = snapshot.where((element) {
         return (element as Patient)
             .fullname
@@ -61,7 +46,7 @@ class PatientController extends GetxController {
             .contains(name.toLowerCase());
       }).toList();
       return searchResults
-          .cast<Patient>(); // Ensure the list is of type Patient
+          .cast<Treatment>(); // Ensure the list is of type Patient
     } catch (e) {
       Get.snackbar('Error', 'Failed to search patients: $e',
           snackPosition: SnackPosition.BOTTOM,
@@ -71,10 +56,10 @@ class PatientController extends GetxController {
     }
   }
 
-  updatePatient(Patient patient) async {
+  updateTreatment(Treatment treatment) async {
     try {
-      await _patientRepo.updatePatientRecord(patient);
-      Get.snackbar('Success', 'Patient details updated successfully',
+      await _treatmentRepo.updateTreatmentRecord(treatment);
+      Get.snackbar('Success', 'Treatment details updated successfully',
           snackPosition: SnackPosition.BOTTOM,
           backgroundColor: Colors.green.withOpacity(0.1),
           colorText: Colors.green);
@@ -86,20 +71,20 @@ class PatientController extends GetxController {
     }
   }
 
-  createPatient(Patient patient) async {
-    await _patientRepo.createPatient(patient);
+  createTreatement(Treatment treatment) async {
+    await _treatmentRepo.createTreatment(treatment);
   }
 
   // Get Patient Details
-  Future<Patient?> getPatientDetails(String id) async {
-    final snapshot = await _patientRepo.getPatientDetails(id);
+  Future<Treatment?> getTreatmentDetails(String id) async {
+    final snapshot = await _treatmentRepo.getTreatmentDetails(id);
     return snapshot;
   }
 
-  Future<int> getPatientsAddedToday() async {
-    final snapshot = await _patientRepo.getAllPatients();
+  Future<int> getTreatmentsAddedToday() async {
+    final snapshot = await _treatmentRepo.getAllTreatments();
     final today = DateTime.now();
-    final todayPatients = snapshot.where((element) {
+    final todayTreatments = snapshot.where((element) {
       // Convert createdAt string to DateTime
       DateTime createdAt = DateTime.parse(element.createdAt);
       // Check if createdAt is on the same day as today
@@ -107,12 +92,12 @@ class PatientController extends GetxController {
           createdAt.month == today.month &&
           createdAt.year == today.year;
     }).toList();
-    return todayPatients.length;
+    return todayTreatments.length;
   }
 
 // Count Number of Patient records in the collection
-  Future<int> getPatientCount() async {
-    final snapshot = await _patientRepo.getAllPatients();
+  Future<int> getTreatmentCount() async {
+    final snapshot = await _treatmentRepo.getAllTreatments();
     return snapshot.length;
   }
 }
