@@ -25,7 +25,7 @@ getImageFile(String filename) {
   });
 }
 
-Future<bool> makeReport({item}) async {
+Future<bool> createReport(item) async {
   final User user = FirebaseAuth.instance.currentUser!;
 
   String dateTime = DateTime.now().toString().substring(0, 16);
@@ -158,7 +158,8 @@ Future<bool> makeReport({item}) async {
   final file = File('$pathdir/Report_$name.pdf');
   final file2 = await file.writeAsBytes(await pdf.save());
   // ignore: deprecated_member_use
-  // Share.shareFiles([file.path]);
+  //  Share.shareFiles([file.path]);
+  final result = await Share.shareXFiles([XFile(file.path)]);
   // Save pdf to Download folder
   await file2.copy('$downloads/Report_$name.pdf');
 
