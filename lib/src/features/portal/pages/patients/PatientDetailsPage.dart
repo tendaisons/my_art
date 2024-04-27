@@ -223,53 +223,63 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                       onTap: ()
                                           // Navigator.pop(context);
                                           async {
-                                        setState(() {
-                                          isLoading = true;
-                                        });
-                                        bool result =
+                                            setState(() {
+                                              isLoading = true;
+                                            });
+                                            bool result =
                                             await createReport(widget.item);
-                                        setState(() {
-                                          isLoading = false;
-                                        });
-                                        // print(result);
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+                                            // print(result);
 
-                                        if (result) {
-                                          Get.showSnackbar(const GetSnackBar(
-                                            title: 'Report Generated',
-                                            message:
-                                                'The Patient Report has been generated and saved to Downloads folder',
-                                            duration: Duration(seconds: 3),
-                                            snackPosition: SnackPosition.BOTTOM,
-                                            backgroundColor: Colors.green,
-                                            margin: EdgeInsets.all(8),
-                                            borderRadius: 8,
-                                            icon: Icon(
-                                                Icons.check_circle_outline),
-                                          ));
-                                          Navigator.pop(context);
-                                        } else {
-                                          Get.showSnackbar(const GetSnackBar(
-                                            title: 'Error',
-                                            message:
-                                                'An error occured while generating the report',
-                                            duration: Duration(seconds: 3),
-                                            snackPosition: SnackPosition.BOTTOM,
-                                            backgroundColor: Colors.red,
-                                            margin: EdgeInsets.all(8),
-                                            borderRadius: 8,
-                                            icon: Icon(Icons.error_outline),
-                                          ));
-                                        }
-                                      }),
-                                  isLoading
-                                      ? const Expanded(
-                                          flex: 1,
-                                          child: Center(
-                                              child:
-                                                  CircularProgressIndicator()))
-                                      : const Spacer(
-                                          flex: 1,
-                                        )
+                                            if (result) {
+                                              Get.showSnackbar(
+                                                  const GetSnackBar(
+                                                    title: 'Report Generated',
+                                                    message:
+                                                    'The Patient Report has been generated and saved to Downloads folder',
+                                                    duration: Duration(
+                                                        seconds: 3),
+                                                    snackPosition: SnackPosition
+                                                        .BOTTOM,
+                                                    backgroundColor: Colors
+                                                        .green,
+                                                    margin: EdgeInsets.all(8),
+                                                    borderRadius: 8,
+                                                    icon: Icon(
+                                                        Icons
+                                                            .check_circle_outline),
+                                                  ));
+                                              Navigator.pop(context);
+                                            } else {
+                                              Get.showSnackbar(
+                                                  const GetSnackBar(
+                                                    title: 'Error',
+                                                    message:
+                                                    'An error occured while generating the report',
+                                                    duration: Duration(
+                                                        seconds: 3),
+                                                    snackPosition: SnackPosition
+                                                        .BOTTOM,
+                                                    backgroundColor: Colors.red,
+                                                    margin: EdgeInsets.all(8),
+                                                    borderRadius: 8,
+                                                    icon: Icon(
+                                                        Icons.error_outline),
+                                                  ));
+                                            }
+                                            //),
+                                            isLoading
+                                                ? const Expanded(
+                                                flex: 1,
+                                                child: Center(
+                                                    child:
+                                                    CircularProgressIndicator()))
+                                                : const Spacer(
+                                              flex: 1,
+                                            );
+                                          }),
                                 ],
                               )));
                     },
