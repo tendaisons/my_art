@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:my_art/screens/add_treatment.dart';
+import 'package:my_art/screens/schedule_screen.dart';
 import 'package:my_art/src/constants/colors.dart';
 import 'package:my_art/src/features/portal/pages/patients/widgets/AddMedication.dart';
+import 'package:my_art/widgets/upcoming_schedule.dart';
 
 import '../../../../../screens/edit-patient.dart';
 import '../../../../common_widgets/math.dart';
@@ -196,7 +199,7 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                   AddMedicationsWidget(
                                     onTap: () {
                                       //Navigator.pop(context);
-                                      //Get.to(() => const ForgetPasswordMailScreen());
+                                      Get.to(() => const AddMed());
                                     },
                                     title: "Add Medications",
                                     subTitle: "Add Patient Medications",
@@ -204,10 +207,12 @@ class _PatientDetailsPageState extends State<PatientDetailsPage> {
                                   ),
                                   const SizedBox(height: 20.0),
                                   AddMedicationsWidget(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Get.to(() => ScheduleScreen());
+                                    },
                                     title: "Book an Appointment",
                                     subTitle:
-                                        "Book an Appointment with Patient",
+                                        "Book an Appointment for the Patient",
                                     btnIcon: LineAwesomeIcons.people_carry,
                                   ),
                                   const SizedBox(height: 20.0),

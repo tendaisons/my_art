@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_art/screens/add_treatment.dart';
 import 'package:my_art/src/features/portal/controllers/ProfileController.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/dashboard/widgets/drawer.dart';
@@ -8,10 +9,6 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../../../../../utils.dart';
 
 class DashboardXScreen extends StatefulWidget {
-
-
-
-
   const DashboardXScreen({super.key});
 
   @override
@@ -98,23 +95,24 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
     double ffem = fem * 0.97;
     return Scaffold(
       appBar: AppBar(
-       title: Obx(() {
-         return RichText(
+        title: Obx(() {
+          return RichText(
             text: TextSpan(
               style: Theme.of(context).textTheme.headline6,
               children: [
-                TextSpan(text: 'Hey, Good ${greetings()} 👋\n',
-                  style: TextStyle( fontSize: 12),
+                TextSpan(
+                  text: 'Hey, Good ${greetings()} 👋\n',
+                  style: TextStyle(fontSize: 12),
                 ),
                 TextSpan(
-                  text: 'Doctor ${profileController.userData.value?.fullname ?? ""}',
+                  text:
+                      'Doctor ${profileController.userData.value?.fullname ?? ""}',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                 ),
               ],
             ),
-         );
-       }
-      ),
+          );
+        }),
       ),
       drawer: const MyDrawer(),
       body: SingleChildScrollView(
@@ -260,7 +258,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: () {
-                          // Get.to( () => const AddTreatment());
+                          Get.to(() => const AddMed());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
@@ -378,7 +376,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     ),
                                   ),
 
-                                // Patient
+                                  // Patient
                                   Positioned(
                                     // patientWvK (13:24)
                                     left: 79 * fem,
@@ -447,7 +445,6 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     ),
                                   ),
 
-
                                   Positioned(
                                     left: 85 * fem,
                                     top: 162 * fem,
@@ -504,7 +501,6 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                       ),
                                     ),
                                   ),
-
 
                                   Positioned(
                                     // ZhZ (13:36)

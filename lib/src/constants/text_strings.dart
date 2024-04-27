@@ -10,7 +10,6 @@ const String tForgetPassword = "Forget Password";
 const String tSignInWithGoogle = "Sign-In with Google";
 const String tUpdate = "Update";
 
-
 // -- Splash Screen Text
 const String tAppName = "My_Art";
 const String tAppTagLine = "Your Medical diary";
@@ -114,3 +113,12 @@ const String save = "Save";
 const String country = "Country";
 const String province = "Province";
 const String city = "City";
+const String address = "Address";
+const String covidVaccination = "Covid-19 Vaccination";
+const String diabetes = "Diabetic";
+const String note = "Note";
+const String allergies = "Allergies";
+const String remarks = "Remarks";
+const String amountofmedicationt = "Amount of Medication";
+const String examinationt = "Examination";
+const String medicationtypet = "MedicationType";

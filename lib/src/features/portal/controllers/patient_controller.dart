@@ -4,7 +4,6 @@ import 'package:my_art/src/models/patient_models.dart';
 import 'package:my_art/src/repositories/patient_repository/patient_repository.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class PatientController extends GetxController {
   static PatientController get instance => Get.find();
 
@@ -24,9 +23,11 @@ class PatientController extends GetxController {
     diabetesController.dispose();
     covidVaccinationController.dispose();
     allergiesController.dispose();
+    amountofMedicationController.dispose();
+    medication_TypeController.dispose();
+    examinationController.dispose();
     super.dispose();
   }
-
 
   /// TextField Controllers to get data from TextFields
   TextEditingController oiartnumberController = TextEditingController();
@@ -43,21 +44,29 @@ class PatientController extends GetxController {
   TextEditingController diabetesController = TextEditingController();
   TextEditingController covidVaccinationController = TextEditingController();
   TextEditingController allergiesController = TextEditingController();
+  TextEditingController medication_TypeController = TextEditingController();
+  TextEditingController examinationController = TextEditingController();
+  TextEditingController amountofMedicationController = TextEditingController();
 
   // Repositories
   final _patientRepo = Get.put(PatientRepository());
 
   // Get all patients from firestore
-  Future <List<Patient>> getAllPatients() async => await _patientRepo.getAllPatients();
+  Future<List<Patient>> getAllPatients() async =>
+      await _patientRepo.getAllPatients();
 
   // Search for patient by name
   Future<List<Patient>> searchPatient(String name) async {
     try {
       final snapshot = await _patientRepo.getAllPatients();
       final searchResults = snapshot.where((element) {
-        return (element as Patient).fullname.toLowerCase().contains(name.toLowerCase());
+        return (element as Patient)
+            .fullname
+            .toLowerCase()
+            .contains(name.toLowerCase());
       }).toList();
-      return searchResults.cast<Patient>(); // Ensure the list is of type Patient
+      return searchResults
+          .cast<Patient>(); // Ensure the list is of type Patient
     } catch (e) {
       Get.snackbar('Error', 'Failed to search patients: $e',
           snackPosition: SnackPosition.BOTTOM,
@@ -66,7 +75,6 @@ class PatientController extends GetxController {
       return [];
     }
   }
-
 
   updatePatient(Patient patient) async {
     try {
@@ -83,13 +91,12 @@ class PatientController extends GetxController {
     }
   }
 
-
   createPatient(Patient patient) async {
     await _patientRepo.createPatient(patient);
   }
 
   // Get Patient Details
-  Future <Patient?> getPatientDetails(String id) async {
+  Future<Patient?> getPatientDetails(String id) async {
     final snapshot = await _patientRepo.getPatientDetails(id);
     return snapshot;
   }
