@@ -258,7 +258,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: () {
-                          //Get.to(() => const AddMed());
+                          Get.to(() => const AddMed());
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(

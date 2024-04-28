@@ -2,7 +2,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
+import 'package:my_art/src/features/portal/controllers/treatment_controller.dart';
 import 'package:my_art/src/models/patient_models.dart';
+import 'package:my_art/src/models/treatment_models.dart';
 import 'package:my_art/utils.dart';
 import 'package:my_art/widgets/navbar_roots.dart';
 
@@ -33,7 +35,7 @@ class _AddMedState extends State<AddMed> {
     return 'A$number$letter';
   }
 
-  final controller = Get.put(PatientController());
+  final controller = Get.put(TreatmentController());
   @override
   Widget build(BuildContext context) {
     double baseWidth = 498;
@@ -99,9 +101,9 @@ class _AddMedState extends State<AddMed> {
                   SizedBox(height: 20),
                   TextFormField(
                     controller: controller.examinationController,
-                    // validator: (value) => value!.isEmail
-                    //     ? null
-                    //     : 'Please enter a valid Patient Email Address',
+                    validator: (value) => value!.isAlphabetOnly
+                        ? null
+                        : 'Please enter a valid Examination',
                     decoration: const InputDecoration(
                       hintText: examinationt,
                     ),
@@ -111,7 +113,7 @@ class _AddMedState extends State<AddMed> {
                   TextFormField(
                     controller: controller.amountofMedicationController,
                     validator: (value) {
-                      if (value == null || value.isNumericOnly) {
+                      if (value == null || value.isEmpty) {
                         return 'Please enter a valid Amount of Medication';
                       }
                       return null;
@@ -122,15 +124,15 @@ class _AddMedState extends State<AddMed> {
                   ),
                   SizedBox(height: 20),
 
-                  TextFormField(
-                    controller: controller.allergiesController,
-                    validator: (value) => value!.isAlphabetOnly
-                        ? null
-                        : 'Please enter a valid Allergies',
-                    decoration: const InputDecoration(
-                      hintText: 'Allergies',
-                    ),
-                  ),
+                  // TextFormField(
+                  //   controller: controller.allergiesController,
+                  //   validator: (value) => value!.isAlphabetOnly
+                  //       ? null
+                  //       : 'Please enter a valid Allergies',
+                  //   decoration: const InputDecoration(
+                  //     hintText: 'Allergies',
+                  //   ),
+                  // ),
                   SizedBox(height: 20),
 
                   SizedBox(
@@ -143,32 +145,20 @@ class _AddMedState extends State<AddMed> {
                                 setState(() {
                                   isLoading = true;
                                 });
-                                PatientController.instance
-                                    .createPatient(Patient(
+                                TreatmentController.instance
+                                    .createTreatment(Treatment(
                                   id: generatePrimaryKey(),
-                                  oiartnumber: controller
-                                      .oiartnumberController.text
-                                      .trim(),
                                   fullname:
                                       controller.nameController.text.trim(),
-                                  phoneNo: controller.phoneNumberController.text
+                                  medication_Type: controller
+                                      .medication_TypeController.text
                                       .trim(),
-                                  email: controller.emailController.text.trim(),
-                                  age: controller.ageController.text.trim(),
-                                  gender:
-                                      controller.genderController.text.trim(),
-                                  address:
-                                      controller.addressController.text.trim(),
-                                  country:
-                                      controller.countryController.text.trim(),
-                                  province:
-                                      controller.provinceController.text.trim(),
-                                  city: controller.cityController.text.trim(),
-                                  note: controller.noteController.text.trim(),
-                                  allergies: controller.allergiesController.text
+                                  examination: controller
+                                      .examinationController.text
                                       .trim(),
-                                  diabetes: _selectedValueDiabetes,
-                                  covidVaccination: _selectedValueCovid,
+                                  amountofMedication: controller
+                                      .amountofMedicationController.text
+                                      .trim(),
                                   createdAt: DateTime.now()
                                       .toString()
                                       .substring(0, 10),
