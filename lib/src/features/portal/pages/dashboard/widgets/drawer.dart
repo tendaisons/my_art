@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:my_art/src/features/portal/pages/treatments/TreatmentDetailsPage.dart';
+import 'package:my_art/src/features/portal/pages/treatments/treatments_screen.dart';
 
 import '../../../../../constants/text_strings.dart';
 import '../../../../../repositories/authentication_repository/authentication_repository.dart';
@@ -38,7 +40,7 @@ class MyDrawer extends StatelessWidget {
             title: const Text('Medication Tips'),
             onTap: () {
               Get.back();
-              //Get.to(() => const FarmingTips());
+              Get.to(() => const TreatmentsScreen());
             },
           ),
           ListTile(

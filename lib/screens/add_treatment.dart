@@ -23,6 +23,20 @@ class _AddMedState extends State<AddMed> {
   String? _selectedValueCovid;
   String? _selectedValueDiabetes;
 
+  final Pcontroller = Get.put(PatientController());
+  final searchController = TextEditingController();
+  late Future<List<Patient>> futurePatients;
+
+  @override
+  void initState() {
+    super.initState();
+    futurePatients = Pcontroller.getAllPatients();
+    controller.nameController.clear();
+    controller.amountofMedicationController.clear();
+    controller.medication_TypeController.clear();
+    controller.examinationController.clear();
+  }
+
 // Generate Ids
 //   String generatePrimaryKey() {
 //     return Random().nextInt(1000000000).toString();
@@ -76,17 +90,41 @@ class _AddMedState extends State<AddMed> {
                   //   ),
                   // ),
                   // SizedBox(height: 20),
-                  TextFormField(
-                    controller: controller.nameController,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter a valid Patient Full Name';
+                  FutureBuilder<List<Patient>>(
+                    future: futurePatients,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<List<Patient>> snapshot) {
+                      if (snapshot.hasData) {
+                        return DropdownButtonFormField<String>(
+                          value: controller.selectedPatient,
+                          icon: const Icon(Icons.arrow_downward),
+                          decoration: const InputDecoration(
+                            labelText: 'Select Patient',
+                          ),
+                          items: snapshot.data!
+                              .map<DropdownMenuItem<String>>((Patient patient) {
+                            return DropdownMenuItem<String>(
+                              value: patient
+                                  .id, // Use the patient's ID as the value
+                              child: Text(patient
+                                  .fullname), // Use the patient's name as the label
+                            );
+                          }).toList(),
+                          onChanged: (String? newValue) {
+                            controller.selectedPatient = newValue;
+                          },
+                          validator: (String? value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please select a patient';
+                            }
+                            return null;
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
                       }
-                      return null;
+                      return CircularProgressIndicator(); // Show a loading spinner if the future is not completed
                     },
-                    decoration: const InputDecoration(
-                      hintText: patientName,
-                    ),
                   ),
                   SizedBox(height: 20),
                   TextFormField(
@@ -148,8 +186,7 @@ class _AddMedState extends State<AddMed> {
                                 TreatmentController.instance
                                     .createTreatment(Treatment(
                                   id: generatePrimaryKey(),
-                                  fullname:
-                                      controller.nameController.text.trim(),
+                                  fullname: controller.selectedPatient!.trim(),
                                   medication_Type: controller
                                       .medication_TypeController.text
                                       .trim(),

@@ -3,26 +3,27 @@ import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
 import 'package:my_art/src/features/portal/pages/patients/widgets/ListItemWidget.dart';
-import 'package:my_art/src/models/patient_models.dart';
-
+import 'package:my_art/src/features/portal/pages/treatments/ListItemWidgetT.dart';
+import 'package:my_art/src/models/treatment_models.dart';
+import 'package:my_art/src/features/portal/controllers/treatment_controller.dart';
 import '../../../../common_widgets/math.dart';
 
-class PatientsScreen extends StatefulWidget {
-  const PatientsScreen({super.key});
+class TreatmentsScreen extends StatefulWidget {
+  const TreatmentsScreen({super.key});
 
   @override
-  State<PatientsScreen> createState() => _PatientsScreenState();
+  State<TreatmentsScreen> createState() => _TreatmentsScreenState();
 }
 
-class _PatientsScreenState extends State<PatientsScreen> {
-  final controller = Get.put(PatientController());
+class _TreatmentsScreenState extends State<TreatmentsScreen> {
+  final controller = Get.put(TreatmentController());
   final searchController = TextEditingController();
-  late Future<List<Patient>> futurePatients;
+  late Future<List<Treatment>> futureTreatments;
 
   @override
   void initState() {
     super.initState();
-    futurePatients = controller.getAllPatients();
+    futureTreatments = controller.getAllTreatments();
   }
 
   @override
@@ -35,14 +36,14 @@ class _PatientsScreenState extends State<PatientsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Patients'),
+        title: Text('Treatments'),
         actions: [
           IconButton(
             icon: Icon(LineAwesomeIcons.search),
             onPressed: () {
               setState(() {
-                futurePatients =
-                    controller.searchPatient(searchController.text);
+                futureTreatments =
+                    controller.searchTreatment(searchController.text);
               });
             },
           ),
@@ -60,14 +61,14 @@ class _PatientsScreenState extends State<PatientsScreen> {
                   onPressed: () {
                     searchController.clear();
                     setState(() {
-                      futurePatients = controller.getAllPatients();
+                      futureTreatments = controller.getAllTreatments();
                     });
                   },
                 ),
               ),
               onSubmitted: (value) {
                 setState(() {
-                  futurePatients = controller.searchPatient(value);
+                  futureTreatments = controller.searchTreatment(value);
                 });
               },
             ),
@@ -79,8 +80,8 @@ class _PatientsScreenState extends State<PatientsScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              FutureBuilder<List<Patient>>(
-                future: futurePatients, // Use the futurePatients variable
+              FutureBuilder<List<Treatment>>(
+                future: futureTreatments, // Use the futurePatients variable
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Container(
@@ -93,7 +94,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
                       children: [
                         SizedBox(height: 200),
                         Icon(LineAwesomeIcons.alternate_file, size: 100),
-                        Center(child: Text('No Patients found!')),
+                        Center(child: Text('No Treatments found!')),
                       ],
                     );
                   } else if (snapshot.hasData) {
@@ -104,7 +105,7 @@ class _PatientsScreenState extends State<PatientsScreen> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         final item = snapshot.data![index];
-                        return ListItemWidget(item);
+                        return ListItemWidgetT(item);
                       },
                     );
                   } else if (snapshot.hasError) {

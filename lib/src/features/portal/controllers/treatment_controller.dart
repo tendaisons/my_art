@@ -35,6 +35,7 @@ class TreatmentController extends GetxController {
   TextEditingController medication_TypeController = TextEditingController();
   TextEditingController examinationController = TextEditingController();
   TextEditingController amountofMedicationController = TextEditingController();
+  String? selectedPatient;
 
   // Repositories
   final _treatmentRepo = Get.put(TreatmentRepository());

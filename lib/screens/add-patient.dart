@@ -26,9 +26,27 @@ class _AddPatientState extends State<AddPatient> {
 //     return Random().nextInt(1000000000).toString();
 //   }
 
+  @override
+  void initState() {
+    super.initState();
+    controller.oiartnumberController.clear();
+    controller.nameController.clear();
+    controller.phoneNumberController.clear();
+    controller.emailController.clear();
+    controller.ageController.clear();
+    controller.genderController.clear();
+    controller.addressController.clear();
+    controller.countryController.clear();
+    controller.provinceController.clear();
+    controller.cityController.clear();
+    controller.allergiesController.clear();
+    controller.noteController.clear();
+  }
+
   String generatePrimaryKey() {
     final int number = Random().nextInt(1000000000);
-    final String letter = String.fromCharCode(Random().nextInt(26) + 65); // Generates a random uppercase letter (A-Z)
+    final String letter = String.fromCharCode(
+        Random().nextInt(26) + 65); // Generates a random uppercase letter (A-Z)
     return 'A$number$letter';
   }
 
@@ -270,39 +288,51 @@ class _AddPatientState extends State<AddPatient> {
                       onPressed: isLoading
                           ? null
                           : () {
-                        if (formKey.currentState!.validate()) {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          PatientController.instance
-                              .createPatient(
-                              Patient(
+                              if (formKey.currentState!.validate()) {
+                                setState(() {
+                                  isLoading = true;
+                                });
+                                PatientController.instance
+                                    .createPatient(Patient(
                                   id: generatePrimaryKey(),
-                                  oiartnumber: controller.oiartnumberController.text.trim(),
-                                  fullname: controller.nameController.text.trim(),
-                                  phoneNo: controller.phoneNumberController.text.trim(),
+                                  oiartnumber: controller
+                                      .oiartnumberController.text
+                                      .trim(),
+                                  fullname:
+                                      controller.nameController.text.trim(),
+                                  phoneNo: controller.phoneNumberController.text
+                                      .trim(),
                                   email: controller.emailController.text.trim(),
                                   age: controller.ageController.text.trim(),
-                                  gender: controller.genderController.text.trim(),
-                                  address: controller.addressController.text.trim(),
-                                  country: controller.countryController.text.trim(),
-                                  province: controller.provinceController.text.trim(),
+                                  gender:
+                                      controller.genderController.text.trim(),
+                                  address:
+                                      controller.addressController.text.trim(),
+                                  country:
+                                      controller.countryController.text.trim(),
+                                  province:
+                                      controller.provinceController.text.trim(),
                                   city: controller.cityController.text.trim(),
                                   note: controller.noteController.text.trim(),
-                                  allergies: controller.allergiesController.text.trim(),
+                                  allergies: controller.allergiesController.text
+                                      .trim(),
                                   diabetes: _selectedValueDiabetes,
                                   covidVaccination: _selectedValueCovid,
-                                  createdAt: DateTime.now().toString().substring(0, 10),
-                                  updatedAt: DateTime.now().toString().substring(0, 10),
-                              ))
-                              .then((_) {
-                            setState(() {
-                              isLoading = false;
-                            });
-                            Get.to(() => NavBarRoots());
-                          });
-                        }
-                      },
+                                  createdAt: DateTime.now()
+                                      .toString()
+                                      .substring(0, 10),
+                                  updatedAt: DateTime.now()
+                                      .toString()
+                                      .substring(0, 10),
+                                ))
+                                    .then((_) {
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                  Get.to(() => NavBarRoots());
+                                });
+                              }
+                            },
                       child: isLoading
                           ? Container(
                               height: 16,
