@@ -262,7 +262,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                         },
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                              vertical: 15, horizontal: 40),
+                              vertical: 15, horizontal: 15),
                           child: const Text(
                             "+ Treatment",
                             style: TextStyle(
@@ -286,9 +286,9 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Column(
                         children: [
-                          SizedBox(
-                            height: 15,
-                          ),
+                          // SizedBox(
+                          //   height: 15,
+                          // ),
                           Center(child: CircularProgressIndicator())
                         ],
                       );
@@ -554,9 +554,9 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                             ),
                                           ),
                                         ),
-
+//pending
                                         Positioned(
-                                          // UJj (14:87)
+                                          // pendingUJj (14:87)
                                           left: 471 * fem,
                                           top: 483 * fem,
                                           child: Align(
@@ -564,7 +564,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                               width: 11 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                '1 hee',
+                                                '99',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,
@@ -622,7 +622,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
                                         Positioned(
-                                          // 9JP (13:37)
+                                          //total patients 9JP (13:37)
                                           left: 227 * fem,
                                           top: 508 * fem,
                                           child: Align(
@@ -644,7 +644,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
                                         Positioned(
-                                          // f1q (14:89)
+                                          // completed (14:89)
                                           left: 471 * fem,
                                           top: 508 * fem,
                                           child: Align(
@@ -652,7 +652,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                               width: 11 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                '0',
+                                                '3',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,
@@ -666,19 +666,19 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
 
+                                        // Positioned(
+                                        //   // addtreatmentTTV (13:27)
+                                        //   left: 312 * fem,
+                                        //   top: 162 * fem,
+                                        //   child: Align(
+                                        //     child: SizedBox(
+                                        //       width: 159 * fem,
+                                        //       height: 30 * fem,
+                                        //     ),
+                                        //   ),
+                                        // ),
                                         Positioned(
-                                          // addtreatmentTTV (13:27)
-                                          left: 312 * fem,
-                                          top: 162 * fem,
-                                          child: Align(
-                                            child: SizedBox(
-                                              width: 159 * fem,
-                                              height: 30 * fem,
-                                            ),
-                                          ),
-                                        ),
-                                        Positioned(
-                                          // rectangle8uaP (13:11)
+                                          // treatmentrectangle8uaP (13:11)
                                           left: 59 * fem,
                                           top: 611 * fem,
                                           child: Align(
@@ -698,7 +698,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
                                         Positioned(
-                                          // rectangle9yKM (13:13)
+                                          // patientrectangle9yKM (13:13)
                                           left: 59 * fem,
                                           top: 259 * fem,
                                           child: Align(
@@ -718,7 +718,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
                                         Positioned(
-                                          // rectangle14Haw (14:92)
+                                          //medication rectangle14Haw (14:92)
                                           left: 308 * fem,
                                           top: 259 * fem,
                                           child: Align(
@@ -897,7 +897,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           ),
                                         ),
                                         Positioned(
-                                          // group27tj (13:30)
+                                          // treatmentgroup27tj (13:30)
                                           left: 465 * fem,
                                           top: 615 * fem,
                                           child: Align(
