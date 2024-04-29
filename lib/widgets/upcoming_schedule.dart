@@ -32,15 +32,16 @@ class UpcomingSchedule extends StatelessWidget {
                 children: [
                   const ListTile(
                     title: Text(
-                      "Dr. Doctor Name",
+                      "Dr. Wendy Musiwa",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text("Therapist"),
+                    subtitle: Text(
+                        "Medical Doctor at Ministry of health and childcare"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/dpe.png"),
+                      backgroundImage: AssetImage("assets/images/wm.jpeg"),
                     ),
                   ),
                   const Padding(
@@ -62,7 +63,7 @@ class UpcomingSchedule extends StatelessWidget {
                           ),
                           SizedBox(width: 5),
                           Text(
-                            "12/01/2023",
+                            "12/05/2024",
                             style: TextStyle(
                               color: Colors.black54,
                             ),
@@ -182,15 +183,15 @@ class UpcomingSchedule extends StatelessWidget {
                 children: [
                   const ListTile(
                     title: Text(
-                      "Dr. Doctor Name",
+                      "Dr. Innocent Karimanzira",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text("Therapist"),
+                    subtitle: Text("Primary Counsellor"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/dpe.png"),
+                      backgroundImage: AssetImage("assets/images/in.png"),
                     ),
                   ),
                   const Padding(
@@ -212,7 +213,7 @@ class UpcomingSchedule extends StatelessWidget {
                           ),
                           SizedBox(width: 5),
                           Text(
-                            "12/01/2023",
+                            "13/05/2024",
                             style: TextStyle(
                               color: Colors.black54,
                             ),
@@ -332,15 +333,15 @@ class UpcomingSchedule extends StatelessWidget {
                 children: [
                   const ListTile(
                     title: Text(
-                      "Dr. Doctor Name",
+                      "Dr. Denmark Mshawatu",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    subtitle: Text("Therapist"),
+                    subtitle: Text("Medical Doctor"),
                     trailing: CircleAvatar(
                       radius: 25,
-                      backgroundImage: AssetImage("assets/images/dpe.png"),
+                      backgroundImage: AssetImage("assets/images/dm.jpeg"),
                     ),
                   ),
                   const Padding(
@@ -362,7 +363,7 @@ class UpcomingSchedule extends StatelessWidget {
                           ),
                           SizedBox(width: 5),
                           Text(
-                            "12/01/2023",
+                            "14/05/2024",
                             style: TextStyle(
                               color: Colors.black54,
                             ),

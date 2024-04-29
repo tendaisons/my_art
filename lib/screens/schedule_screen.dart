@@ -19,22 +19,25 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Schedule"),
-      ),
+          title: Text(
+        "Schedule",
+        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w100),
+      )),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(top: 40, left: 15, right: 15),
+          padding:
+              const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Schedule",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              SizedBox(height: 20),
+              // Text(
+              //   "Schedule",
+              //   style: TextStyle(
+              //     fontSize: 32,
+              //     fontWeight: FontWeight.w500,
+              //   ),
+              // ),
+              SizedBox(height: 3),
               Container(
                 padding: const EdgeInsets.all(5),
                 decoration: BoxDecoration(
@@ -90,7 +93,7 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
-                            "Completed",
+                            "Pending",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:my_art/src/features/portal/controllers/patient_controller.dart';
-import 'package:my_art/src/features/portal/pages/patients/widgets/ListItemWidget.dart';
 import 'package:my_art/src/features/portal/pages/treatments/ListItemWidgetT.dart';
 import 'package:my_art/src/models/treatment_models.dart';
 import 'package:my_art/src/features/portal/controllers/treatment_controller.dart';

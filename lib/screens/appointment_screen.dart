@@ -52,7 +52,7 @@ class AppointmentsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 15),
                         const Text(
-                          "Dr. Doctor Name",
+                          "Dr. Denmark Mshawatu ",
                           style: TextStyle(
                             fontSize: 23,
                             fontWeight: FontWeight.w500,
@@ -61,7 +61,7 @@ class AppointmentsScreen extends StatelessWidget {
                         ),
                         const SizedBox(height: 5),
                         const Text(
-                          "Therapist",
+                          "Medical Doctor",
                           style: TextStyle(
                             color: Colors.white60,
                             fontWeight: FontWeight.bold,

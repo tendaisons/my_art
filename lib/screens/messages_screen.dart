@@ -5,9 +5,9 @@ import 'package:my_art/screens/chat_screen.dart';
 class MessagesScreen extends StatelessWidget {
   List imgs = [
     "dpe.png",
-    "dpe.png",
-    "dpe.png",
-    "dpe.png",
+    "wm.jpeg",
+    "in.png",
+    "dm.jpeg",
     "dpe.png",
     "dpe.png",
   ];
@@ -149,16 +149,13 @@ class MessagesScreen extends StatelessWidget {
                     "assets/images/${imgs[index]}",
                   ),
                 ),
-                title: Text(
-                  "Doctor Name",
-                  style: Theme.of(context).textTheme.bodyMedium
-                ),
-                subtitle:  Text(
-                  "Hello, Docotr, are you there? asd as d asd a sd asd as d s",
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.bodyMedium
-                ),
+                title: Text("Dr Tatenda Alexio Shambare",
+                    style: Theme.of(context).textTheme.bodyMedium),
+                subtitle: Text(
+                    "Hello Doctor, I hope i find you well!. I would like to book an appointment with you. I have been feeling unwell for the past few days and i would like to get a check up. I am available on Monday at 12:30pm. Please let me know if you are available. Thank you!",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: Theme.of(context).textTheme.bodyMedium),
                 trailing: Text(
                   "12:30",
                   style: Theme.of(context).textTheme.bodyMedium,
