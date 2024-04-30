@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AddMedicationsWidget extends StatelessWidget {
-  const AddMedicationsWidget({
+class AddTreatmentWidget extends StatelessWidget {
+  const AddTreatmentWidget({
     required this.btnIcon,
     required this.title,
     required this.subTitle,

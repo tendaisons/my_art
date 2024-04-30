@@ -17,9 +17,8 @@ class ChatSample extends StatelessWidget {
                 color: Color.fromARGB(255, 54, 54, 214),
               ),
               child: const Text(
-                "Hello, what i can do for you. you can book appointment directly.",
-                style: TextStyle(fontSize: 16),
-              ),
+                  "Hello, Good morning. How may i me of help to you today?",
+                  style: TextStyle(fontSize: 16, color: Colors.white)),
             ),
           ),
         ),
@@ -36,7 +35,7 @@ class ChatSample extends StatelessWidget {
                   color: Color(0xff303e9f),
                 ),
                 child: Text(
-                  "Hello Doctor, Are you there?",
+                  "I want to book an appointment with you. Can you help me with that?",
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),

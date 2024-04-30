@@ -146,9 +146,10 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     children: [
                                       Text(
                                         'Patients Added Today',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 20,
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -197,12 +198,10 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Text(
-                                        'Total Patients',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .headlineSmall,
-                                      ),
+                                      Text('Total Patients',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20)),
                                     ],
                                   ),
                                   Text(
@@ -409,7 +408,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           top: 261 * fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 71 * fem,
+                                              width: 113 * fem,
                                               height: 30 * fem,
                                               child: Text(
                                                 'Patients',
@@ -516,10 +515,10 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                           top: 483 * fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 66 * fem,
+                                              width: 100 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                'Pending',
+                                                'Dispatched',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,
@@ -557,14 +556,14 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
 //pending
                                         Positioned(
                                           // pendingUJj (14:87)
-                                          left: 471 * fem,
+                                          left: 450 * fem,
                                           top: 483 * fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 11 * fem,
+                                              width: 100 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                '99',
+                                                '300',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,
@@ -608,7 +607,7 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                               width: 91 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                'Completed',
+                                                'Stock Left',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,
@@ -645,14 +644,14 @@ class _DashboardXScreenState extends State<DashboardXScreen> {
                                         ),
                                         Positioned(
                                           // completed (14:89)
-                                          left: 471 * fem,
+                                          left: 450 * fem,
                                           top: 508 * fem,
                                           child: Align(
                                             child: SizedBox(
-                                              width: 11 * fem,
+                                              width: 50 * fem,
                                               height: 24 * fem,
                                               child: Text(
-                                                '3',
+                                                '100',
                                                 style: SafeGoogleFont(
                                                   'Poppins',
                                                   fontSize: 16 * ffem,

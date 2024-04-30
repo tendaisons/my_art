@@ -65,7 +65,7 @@ class TreatmentController extends GetxController {
     }
   }
 
-  updatePatient(Treatment treatment) async {
+  updateTreatment(Treatment treatment) async {
     try {
       await _treatmentRepo.updateTreatmentRecord(treatment);
       Get.snackbar('Success', 'Treatment details updated successfully',

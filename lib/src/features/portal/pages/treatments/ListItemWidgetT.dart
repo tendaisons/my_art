@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:my_art/src/features/portal/pages/patients/PatientDetailsPage.dart';
 import 'package:my_art/src/features/portal/pages/treatments/TreatmentDetailsPage.dart';
-import 'package:my_art/src/models/patient_models.dart';
+import 'package:my_art/src/models/treatment_models.dart';
 import 'package:my_art/src/constants/dimensions.dart';
 import 'package:my_art/src/common_widgets/math.dart';
 
 import 'package:my_art/src/constants/colors.dart';
-import 'package:my_art/src/models/treatment_models.dart';
 
 class ListItemWidgetT extends StatelessWidget {
   final Treatment item;
@@ -146,7 +144,7 @@ class ListItemWidgetT extends StatelessWidget {
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => PatientDetailsPage(
+                          builder: (_) => TreatmentDetailsPage(
                                 // Send clicked record to details screen by id
                                 item: item,
                               ))),
@@ -176,7 +174,7 @@ class ListItemWidgetT extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'View Patient >',
+                      'View Treatment >',
                       textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                           fontSize: 14.0,

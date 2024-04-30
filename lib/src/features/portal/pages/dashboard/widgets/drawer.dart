@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:my_art/screens/profile_screen.dart';
+import 'package:my_art/screens/settings_screen.dart';
+import 'package:my_art/src/features/portal/pages/patients/patients_screen.dart';
 import 'package:my_art/src/features/portal/pages/treatments/TreatmentDetailsPage.dart';
 import 'package:my_art/src/features/portal/pages/treatments/treatments_screen.dart';
 
@@ -19,7 +22,10 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             contentPadding: EdgeInsets.all(0),
             title: Text('$tAppName',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: const Color(0xff24284d))),
             subtitle: Text(tAppDescription),
           ),
           const SizedBox(height: 20),
@@ -33,11 +39,11 @@ class MyDrawer extends StatelessWidget {
               title: const Text('Profile'),
               onTap: () {
                 Get.back();
-                // Get.to(() => const ProfileScreen());
+                Get.to(() => ProfileScreen());
               }),
           ListTile(
             leading: const Icon(LineAwesomeIcons.book),
-            title: const Text('Medication Tips'),
+            title: const Text('Medication Treatments'),
             onTap: () {
               Get.back();
               Get.to(() => const TreatmentsScreen());
@@ -48,7 +54,7 @@ class MyDrawer extends StatelessWidget {
             title: const Text('Settings'),
             onTap: () {
               Get.back();
-              //Get.to(() => const Settings());
+              Get.to(() => SettingScreen());
             },
           ),
           ListTile(
@@ -60,10 +66,10 @@ class MyDrawer extends StatelessWidget {
               }),
           ListTile(
             leading: const Icon(LineAwesomeIcons.readme),
-            title: const Text('Records'),
+            title: const Text('Patients Records'),
             onTap: () {
               Get.back();
-              //Get.to(() => const ViewAll());
+              Get.to(() => PatientsScreen());
             },
           ),
           ListTile(

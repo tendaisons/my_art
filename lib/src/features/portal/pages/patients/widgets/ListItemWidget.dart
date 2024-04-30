@@ -14,12 +14,13 @@ class ListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()
-      => Navigator.push(
-          context, MaterialPageRoute(builder: (_) => PatientDetailsPage(
-        // Send clicked record to details screen by id
-        item: item,
-      ))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (_) => PatientDetailsPage(
+                    // Send clicked record to details screen by id
+                    item: item,
+                  ))),
       child: Container(
         margin: EdgeInsets.only(
           top: getVerticalSize(6.0),
@@ -56,7 +57,7 @@ class ListItemWidget extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(width:8),
+                const SizedBox(width: 8),
                 Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,13 +67,13 @@ class ListItemWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                            item.fullname,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.left,
-                            style:  TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
-                            ),
+                          item.fullname,
+                          overflow: TextOverflow.ellipsis,
+                          textAlign: TextAlign.left,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16.0,
+                          ),
                         ),
                         Padding(
                           padding: EdgeInsets.only(
@@ -105,11 +106,10 @@ class ListItemWidget extends StatelessWidget {
                                     10,
                                   ),
                                 ),
-                                child: Text( item.phoneNo,
+                                child: Text(item.phoneNo,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
-                                    style: const TextTheme().bodyLarge
-                                ),
+                                    style: const TextTheme().bodyLarge),
                               ),
                               Text(
                                 item.gender,
@@ -128,33 +128,26 @@ class ListItemWidget extends StatelessWidget {
                   ],
                 ),
                 const Spacer(),
-
               ],
             ),
-            const SizedBox(height:16),
+            const SizedBox(height: 16),
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-
-                const SizedBox(height:8),
-                Text(
-                    "${item.city} | ${item.country}",
+                const SizedBox(height: 8),
+                Text("${item.city} | ${item.country}",
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: const TextTheme().bodySmall
-                ),
+                    style: const TextTheme().bodySmall),
                 const Spacer(),
                 InkWell(
-                  onTap: ()
-                  => Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => PatientDetailsPage(
-                    // Send clicked record to details screen by id
-                    item: item,
-
-
-
-                  ))),
-
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => PatientDetailsPage(
+                                // Send clicked record to details screen by id
+                                item: item,
+                              ))),
                   child: Container(
                     alignment: Alignment.center,
                     padding: EdgeInsets.only(
@@ -183,7 +176,10 @@ class ListItemWidget extends StatelessWidget {
                     child: Text(
                       'View Patient >',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.poppins(fontSize: 14.0, fontWeight: FontWeight.normal, color: tWhiteColor),
+                      style: GoogleFonts.poppins(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.normal,
+                          color: tWhiteColor),
                     ),
                   ),
                 ),

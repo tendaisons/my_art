@@ -21,7 +21,7 @@ class ChatScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 10),
                 child: Text(
-                  "Dr. Doctor Name",
+                  "Dr. Tatenda Alexio",
                   style: TextStyle(
                     color: Colors.white,
                   ),
@@ -103,7 +103,7 @@ class ChatScreen extends StatelessWidget {
                 width: 270,
                 child: TextFormField(
                   decoration: const InputDecoration(
-                    hintText: "Type omething",
+                    hintText: "Type something",
                     border: InputBorder.none,
                   ),
                 ),

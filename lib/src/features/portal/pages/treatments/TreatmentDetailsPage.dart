@@ -4,7 +4,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:my_art/screens/add_treatment.dart';
 import 'package:my_art/screens/schedule_screen.dart';
 import 'package:my_art/src/constants/colors.dart';
-import 'package:my_art/src/features/portal/pages/patients/widgets/AddMedication.dart';
+import 'package:my_art/src/features/portal/pages/treatments/AddTreatment.dart';
 import 'package:my_art/widgets/upcoming_schedule.dart';
 
 import '../../../../../screens/edit-patient.dart';
@@ -174,7 +174,7 @@ class _TreatmentDetailsPageState extends State<TreatmentDetailsPage> {
                                           .textTheme
                                           .bodyMedium),
                                   const SizedBox(height: 30.0),
-                                  AddMedicationsWidget(
+                                  AddTreatmentWidget(
                                     onTap: () {
                                       //Navigator.pop(context);
                                       Get.to(() => const AddMed());
@@ -184,7 +184,7 @@ class _TreatmentDetailsPageState extends State<TreatmentDetailsPage> {
                                     btnIcon: LineAwesomeIcons.medical_briefcase,
                                   ),
                                   const SizedBox(height: 20.0),
-                                  AddMedicationsWidget(
+                                  AddTreatmentWidget(
                                     onTap: () {
                                       Get.to(() => ScheduleScreen());
                                     },
@@ -194,7 +194,7 @@ class _TreatmentDetailsPageState extends State<TreatmentDetailsPage> {
                                     btnIcon: LineAwesomeIcons.people_carry,
                                   ),
                                   const SizedBox(height: 20.0),
-                                  AddMedicationsWidget(
+                                  AddTreatmentWidget(
                                       title: "Report",
                                       subTitle: "Generate a Report for Patient",
                                       btnIcon: LineAwesomeIcons.pdf_file,
